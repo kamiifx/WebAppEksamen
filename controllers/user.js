@@ -1,4 +1,4 @@
-import {officeService, userService} from '../services/index'
+import { userService} from '../services/index'
 
 
 export const get = (async (req, res, next) => {
