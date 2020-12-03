@@ -2,7 +2,7 @@ import { userService} from '../services/index'
 
 
 export const get = (async (req, res, next) => {
-    const user = await userService.getOfficeById(req.params.id);
+    const user = await userService.getUserById(req.params.id);
     res.status(201).json("get test");
 });
 
