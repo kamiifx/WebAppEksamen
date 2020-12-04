@@ -12,6 +12,7 @@ export const list = (async (req, res, next) => {
 
 export const create = (async (req, res, next) => {
     const office = await officeService.createOffice(req.body);
+    req.body.user = req.user.id;
     res.status(201).json(office);
 });
 export const update = (async (req, res, next) => {
