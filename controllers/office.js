@@ -1,5 +1,4 @@
-import { officeService } from '../services/index'
-
+import { officeService } from '../services/index.js'
 
 export const get = (async (req, res, next) => {
     const office = await officeService.getOfficeById(req.params.id);

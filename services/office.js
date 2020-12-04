@@ -1,4 +1,4 @@
-import Office from '../model/office.js'
+import Office from '../models/office.js'
 
 export const getOfficeById = async (id) => Office.findById();
 export const listAllOffices = async () => Office.find();

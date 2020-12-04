@@ -7,6 +7,6 @@ router.get(`/:id`, userController.get);
 
 router.post('/', userController.create);
 
-router.delete('/:id', officeController.remove);
+router.delete('/:id', userController.remove);
 
 export default router;

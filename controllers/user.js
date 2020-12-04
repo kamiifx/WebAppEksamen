@@ -1,4 +1,4 @@
-import { userService} from '../services/index'
+import { userService} from '../services/index.js'
 
 
 export const get = (async (req, res, next) => {
