@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+//import User from "./user";
 
 const { Schema } = mongoose;
 
@@ -12,6 +13,7 @@ const OfficeSchema = new Schema(
             type: String,
             required: true,
         },
+
         phone:{
             type: String,
             required: true,
@@ -27,4 +29,6 @@ const OfficeSchema = new Schema(
     }
 );
 
-export default mongoose.model('Office', OfficeSchema);
+
+const Office = mongoose.model('Office', OfficeSchema);
+export default Office;
