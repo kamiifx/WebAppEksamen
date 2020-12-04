@@ -1,10 +1,10 @@
 import express from 'express';
-import { userController } from '../controllers/index.js';
+import {officeController, userController} from '../controllers/index.js';
 
 const router = express.Router();
 
 router.get(`/:id`, userController.get);
-
+router.get('/', userController.list);
 router.post('/', userController.create);
 
 router.delete('/:id', userController.remove);

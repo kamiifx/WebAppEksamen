@@ -27,6 +27,13 @@ export const login = (async (req, res, next) => {
 });
 
 export const logout = (async (req, res, next) => {
+    res.cookie('token', 'none', {
+        expires: new Date(Date.now()),
+        httpOnly: true,
+    });
 
-    //sendToken(user, res)
+    res.status(200).json({
+        success: true,
+        data: 'logged out',
+    });
 });

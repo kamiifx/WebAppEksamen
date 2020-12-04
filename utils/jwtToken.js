@@ -15,7 +15,7 @@ export const sendToken = (user, res) => {
 
     res
         .status(200)
-        .cookie('cookieToken', token, info)
+        .cookie('token', token, info)
         .json({
             success: true,
             token,

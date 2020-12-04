@@ -1,6 +1,6 @@
 import Office from '../models/office.js'
 
-export const getOfficeById = async (id) => Office.findById();
+export const getOfficeById = async (id) => Office.findById(id);
 export const listAllOffices = async () => Office.find();
 
 
