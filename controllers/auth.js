@@ -16,7 +16,8 @@ export const login = (async (req, res, next) => {
 
     const user = await userService.getUserByEmail({ email }, true);
     if (!user) {
-        return console.log(user + "dose not exist");
+        res.status(400).json("user dose not exist")
+        return console.log( "user dose not exist");
     }
 
     const passwordCheck = await user.comparePassword(password);

@@ -27,7 +27,8 @@ const ArticleSchema = new Schema(
             type: String,
             //required: true,
         },
-    }
+    },
+    { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
 
