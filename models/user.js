@@ -24,6 +24,10 @@ const UserSchema = new Schema(
             },
             default: 'user',
         },
+        name: {
+            type: String,
+            required: [true, 'Enter full name'],
+        }
     },
     { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
@@ -40,8 +44,7 @@ UserSchema.methods.getJwtToken = function () {
 
 UserSchema.methods.comparePassword = async function (password) {
     console.log(password);
-    const result = argon2.verify(this.password, password);
-    return result;
+    return argon2.verify(this.password, password);
 };
 const User = mongoose.model('User', UserSchema);
 

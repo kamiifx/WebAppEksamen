@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+//import User from "./user";
 
 const { Schema } = mongoose;
 
@@ -10,21 +11,24 @@ const OfficeSchema = new Schema(
         },
         address: {
             type: String,
-            required: true,
+            //required: true,
         },
+
         phone:{
             type: String,
-            required: true,
+            //required: true,
         },
         location: {
             type: String,
-            required: true,
+            //required: true,
         },
         email: {
             type: String,
-            required: true,
+            //required: true,
         },
     }
 );
 
-export default mongoose.model('Office', OfficeSchema);
+
+const Office = mongoose.model('Office', OfficeSchema);
+export default Office;
