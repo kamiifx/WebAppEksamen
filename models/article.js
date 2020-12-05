@@ -7,22 +7,21 @@ const ArticleSchema = new Schema(
     {
         tittle: {
             type: String,
+            minlength: [2, 'Minimum two characters'],
             required: true,
         },
         paragraph: {
-            type: Array,
+            type: Array(String),
+            minlength: [10, 'Minimum 10 characters'],
             required: true,
         },
 
         subtitle:{
-            type: Array,
+            type: Array(String),
+            minlength: [2, 'Minimum two characters'],
             required: true,
         },
-        author: {
-            type : Array , "default" : ["Lars Larsen", "Gunn Gundersen", "Simen Simensen"],
 
-            required: true,
-        },
         email: {
             type: String,
             //required: true,

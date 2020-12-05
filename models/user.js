@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
+//import validator from "validator";
 
 const { Schema } = mongoose;
 
@@ -10,6 +11,7 @@ const UserSchema = new Schema(
             type: String,
             required: [true,'Enter email' ],
             unique: true,
+            //validate: [validator.isEmail("Email not valid")]
         },
         password: {
             type: String,

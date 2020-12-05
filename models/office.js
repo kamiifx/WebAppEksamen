@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-//import User from "./user";
+//import validator from "validator";
+
 
 const { Schema } = mongoose;
 
@@ -7,24 +8,29 @@ const OfficeSchema = new Schema(
     {
         name: {
             type: String,
+            minlength: [4, 'Minimum four characters'],
             required: true,
         },
         address: {
             type: String,
-            //required: true,
+            minlength: [4, 'Minimum four characters'],
+            required: true,
         },
 
         phone:{
             type: String,
-            //required: true,
+            minlength: [8, 'Minimum four characters'],
+            required: true,
         },
         location: {
             type: String,
-            //required: true,
+
+            required: true,
         },
         email: {
             type: String,
-            //required: true,
+            required: true,
+            //validate: [validator.isEmail("Email not valid")]
         },
     }
 );
