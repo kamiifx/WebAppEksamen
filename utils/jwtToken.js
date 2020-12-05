@@ -1,3 +1,4 @@
+// forelesning
 export const sendToken = (user, res) => {
     const token = user.getJwtToken();
 

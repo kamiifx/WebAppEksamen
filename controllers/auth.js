@@ -1,10 +1,11 @@
 import {userService} from "../services/index.js";
-import jwt from 'jsonwebtoken';
 import { sendToken } from '../utils/jwtToken.js';
 
 export const signUp = (async (req, res, next) => {
     const user = await userService.createUser(req.body);
-    sendToken(user, res)
+    sendToken(user, res);
+    console.log(user + " is now signed up!");
+
 });
 
 export const login = (async (req, res, next) => {
@@ -23,7 +24,8 @@ export const login = (async (req, res, next) => {
     if(!passwordCheck){
         return console.log("Password and email do not match");
     }
-    sendToken(user, res)
+    console.log(user + " is now logged in!");
+    sendToken(user, res);
 });
 
 export const logout = (async (req, res, next) => {
