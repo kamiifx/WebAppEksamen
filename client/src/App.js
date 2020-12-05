@@ -4,6 +4,7 @@ import Theme from "./styled/Theme";
 
 import Home from "./components/Home";
 import Header from "./components/Header";
+import Articles from './components/Articles';
 function App() {
   return (
       <>
@@ -12,6 +13,7 @@ function App() {
                   <BrowserRouter>
                       <Header/>
                       <Route exact path="/" component={Home}/>
+                      <Route exact path="/articles" component={Articles}/>
                   </BrowserRouter>
               </div>
           </Theme>
