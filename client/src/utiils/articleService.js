@@ -9,3 +9,11 @@ export const list = async () => {
         return err.response;
     }
 }
+
+export const get = async (id) => {
+    try{
+        return await http.get(`${API}/${id}`)
+    }catch (err){
+        return err.response;
+    }
+}
