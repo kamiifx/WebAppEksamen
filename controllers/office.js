@@ -2,16 +2,17 @@ import { officeService } from '../services/index.js'
 
 export const get = (async (req, res, next) => {
     const office = await officeService.getOfficeById(req.params.id);
-    res.status(201).json("get test");
+    res.status(201).json(office);
 });
 export const list = (async (req, res, next) => {
     const offices = await officeService.listAllOffices();
-    res.status(200).json("list all test");
+    res.status(200).json(offices);
 });
 
 
 export const create = (async (req, res, next) => {
     const office = await officeService.createOffice(req.body);
+    req.body.user = req.user.id;
     res.status(201).json(office);
 });
 export const update = (async (req, res, next) => {

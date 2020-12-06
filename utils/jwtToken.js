@@ -1,3 +1,4 @@
+// forelesning
 export const sendToken = (user, res) => {
     const token = user.getJwtToken();
 
@@ -15,7 +16,7 @@ export const sendToken = (user, res) => {
 
     res
         .status(200)
-        .cookie('cookieToken', token, info)
+        .cookie('token', token, info)
         .json({
             success: true,
             token,
