@@ -6,22 +6,32 @@ const FlexBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-left: 13%;
-  max-width: 90%;
+  max-width: 94%;
 `
 
 const FlexItemBox = styled.div`
   display: flex;
   justify-content: center;
-  width: 40rem;
-  height: 25rem;
+  align-items: center;
+  width: 30rem;
+  height: 30rem;
   background-color:${({ theme }) => theme.colors.header};
   margin-left: 20px;
   &.med{
-  width: 74.8rem;
+  width: 84.7rem;
   }
   &.big{
   margin-top: 35px;
   width: 116rem;
+  height: 35rem;
+  margin-bottom: 6rem;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Roboto',sans-serif;
+    font-size: 60px;
+    font-weight: 600;
   }
 `
 
