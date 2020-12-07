@@ -1,9 +1,6 @@
 import Image from '../models/image.js'
 
 
-
-
-
 //export const uploadImage = async (data) => Office.create(data);
 export const uploadImage = async (data) => {
     const image = new Image({
@@ -13,6 +10,5 @@ export const uploadImage = async (data) => {
     const savedImage = await image.save();
     return savedImage;
 };
-
 
 export const getImageById = async (id) => Image.findById(id);

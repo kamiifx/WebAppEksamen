@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import {connectDatabase} from './config/db.js';
 import env from 'dotenv';
+
 import user from './routes/user.js';
 import office from './routes/office.js';
 import auth from './routes/auth.js';
@@ -13,6 +14,7 @@ import image from './routes/image.js';
 const app = express();
 env.config();
 app.use(express.json());
+app.use(express.static(`./public`));
 
 app.use(morgan('dev'));
 app.use(cookieParser());

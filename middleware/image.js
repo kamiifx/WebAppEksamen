@@ -3,7 +3,7 @@ import multer from 'multer';
 
 function fileFilter(req, file, cb) {
     const filetypes = /\.(jpeg|jpg|png)$/;
-    if (!file.originalame.match(filetypes)) {
+    if (!file.originalname.match(filetypes)) {
         return cb(new console.log('Kun bildefiler er lov'));
     }
     cb(null, true);

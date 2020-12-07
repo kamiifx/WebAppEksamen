@@ -22,10 +22,8 @@ export const get = (async (req, res, next) => {
         'Content-Type': image.file_mimetype,
     });
 
-    res.sendFile(path.join(__dirname, '..', image.file_path));
-    //   const imagePath = image.file_path.replace('public/', '');
-    //   res.status(200).json({
-    //     success: true,
-    //     data: { image, imagePath },
-    //   });
+    //res.sendFile(path.join(__dirname, '..', image.file_path));
+      const imagePath = image.file_path.replace('public/', '');
+      res.status(200).json({success: true, data: { image, imagePath },
+      });
 });
