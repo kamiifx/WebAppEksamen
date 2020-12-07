@@ -6,6 +6,7 @@ const theme = {
     body:'#FFF',
     colors:{
         default:'#F7FAFC',
+        header:'#DBDBDB',
         greenAccept:'#68D391',
         redDeny:'#FC8181',
         alert:'#E53E3E',
@@ -15,10 +16,14 @@ const theme = {
     },
     shadows:{
         sm:'0px 0px 25px 0px rgba(0,0,0,0.25);',
-        md:'0px 0px 25px 0px rgba(0,0,0,0.45);',
-        lg:'0px 0px 25px 0px rgba(0,0,0,0.55);',
-        hg:'0px 0px 25px 0px rgba(0,0,0,0.75);'
+        md:'0px 0px 25px 0px rgba(0,0,0,0.35);',
+        lg:'0px 0px 25px 0px rgba(0,0,0,0.45);',
+        hg:'0px 0px 25px 0px rgba(0,0,0,0.55);',
     },
+    breakpoints:{
+        mobileS:'(max-width: 480px)',
+        mobileM:'(max-width: 573px)',
+    }
 
 }
 
