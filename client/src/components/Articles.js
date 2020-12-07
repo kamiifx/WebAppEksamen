@@ -1,21 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 import {list} from '../utiils/articleService';
-import {Header,Container,ArticleBlock,ArticleIntro} from '../styled/Styled';
+import {Header,Container,ArticleBlock,ArticleIntro,BoxButton} from '../styled/Styled';
 
 
-const BoxButton = styled.button`
-  background-color:${({ theme }) => theme.colors.header};
-  border: none;
-  font-family: 'Roboto',sans-serif;
-  font-weight: 600;
-  color: white;
-  width: 10rem;
-  height: 5rem;
-  &.blue{
-      background-color:${({ theme }) => theme.colors.accept};
-  }
-`;
+
 
 
 function Articles(){

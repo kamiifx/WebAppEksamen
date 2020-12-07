@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import {LinkNavbar,LeftDivNav} from '../styled/Styled'
+import {motion} from "framer-motion";
 
 const NavBar = styled.nav`
   z-index: 1;
   position: sticky;
   height: 65px;
   width:100%;
-  background-color: ${({ theme }) => theme.colors.default};
+  background-color: #fff;
   box-shadow:${({ theme }) => theme.shadows.md};
   display: flex;
   align-items: flex-start;
@@ -32,7 +33,7 @@ const NavBar = styled.nav`
   };
 `;
 
-const Login = styled.button`
+const Login = styled(motion.button)`
   color: black;
   text-decoration: none;
   margin-left: 20px;
@@ -53,7 +54,7 @@ const Login = styled.button`
     }
 `;
 
-function Header(){
+function Header({modal,setModal}){
     return(
         <header>
             <NavBar>
@@ -63,7 +64,7 @@ function Header(){
                     <LinkNavbar href="/">Kontorer</LinkNavbar>
                     <LinkNavbar href="/articles">Fagartikler</LinkNavbar>
                     <LinkNavbar href="/">Kontakt</LinkNavbar>
-                    <Login>Login</Login>
+                    <Login whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }}   onClick={() => setModal(true)}>Login</Login>
                 </LeftDivNav>
             </NavBar>
         </header>
