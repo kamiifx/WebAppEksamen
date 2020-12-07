@@ -16,7 +16,7 @@ const UserSchema = new Schema(
         password: {
             type: String,
             required: [true, 'Enter password'],
-            minlength: [6, 'Password minimum length of 6 characters']
+            minlength: [3, 'Password minimum length of 6 characters']
         },
         role: {
             type: String,
@@ -33,6 +33,7 @@ const UserSchema = new Schema(
     },
     { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
+
 // auth (forelesning)
 UserSchema.pre('save', async function (next) {
     this.password = await argon2.hash(this.password);
