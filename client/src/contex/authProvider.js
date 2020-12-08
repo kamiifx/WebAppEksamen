@@ -15,6 +15,7 @@ const AuthProvider = ({children}) => {
                 if (data?.success){
                     const currentUser = data.data;
                     setUser(currentUser)
+                    console.log(currentUser)
                 }else {
                     setUser(null);
                 }

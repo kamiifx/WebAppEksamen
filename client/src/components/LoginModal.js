@@ -5,6 +5,7 @@ import {useForm} from "react-hook-form";
 import {login} from "../utiils/authService";
 import {useAuthContex} from "../contex/authProvider";
 import {BoxButton} from "../styled/Styled";
+import {useHistory} from 'react-router-dom';
 
 const ModalBody = styled(motion.div)`
 position: absolute;
@@ -105,6 +106,7 @@ function LoginModal({modal,setModalOn}){
     const [error,setError] = useState(null);
     const {register,errors,handleSubmit,formState} = useForm({mode:'onBlur'})
     const {setUser} = useAuthContex();
+    const history = useHistory();
 
 
 
@@ -125,6 +127,8 @@ function LoginModal({modal,setModalOn}){
             const expire = JSON.parse(window.atob(data.token.split('.')[1])).exp;
             setUser({...user,expire});
             setSuccess(true);
+            history.push('/')
+            setModalOn(false)
         }
     };
 
