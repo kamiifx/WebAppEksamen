@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import Header from "./components/Header";
 import Articles from './components/Articles';
 import ArticlePage from "./components/ArticlePage";
-import AuthProvider,{useAuthContex} from "./contex/authProvider";
+import AuthProvider from "./contex/authProvider";
 
 function App() {
     const [modal,ToggleModal] = useState(false);

@@ -72,7 +72,7 @@ export const Header = styled.header`
   background-color:${({ theme }) => theme.colors.header};
   justify-content: center;
   margin-bottom: 5rem;
-  background-image:linear-gradient(90deg, rgba(190,190,190,1) 0%, rgba(147,237,255,0.5970588919161415) 100%), url("https://www.rovop.com/assets/img/water-gif.gif");
+  background-image:linear-gradient(90deg, rgba(190,190,190,0.4) 0%, rgba(147,237,255,0.2970588919161415) 100%), url("https://www.rovop.com/assets/img/water-gif.gif");
   background-size: cover;
   h2{
     font-size: 40px;
