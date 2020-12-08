@@ -20,12 +20,8 @@ export const login = async (userdata) => {
     }
 };
 
-export const getCurrent = async () => {
-    try {
-        return await http.get('/me')
-    }catch (err){
-        return err.response;
-    }
+export async function getCurrent() {
+    return await http.get('/me')
 }
 
 export const logout = async () => {

@@ -5,7 +5,7 @@ import errorHandler from "../utils/errorHandler.js";
 export const authentication = (async  (req, res, next) => {
     let token;
 
-    if(req.cookies != null){
+    if(req.cookies?.token){
         token = req.cookies.token;
     }
     if(!token){

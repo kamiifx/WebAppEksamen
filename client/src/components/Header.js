@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {LinkNavbar,LeftDivNav} from '../styled/Styled'
 import {motion} from "framer-motion";
 import {logout} from "../utiils/authService";
-import {useAuthContex} from "../contex/authProvider";
+import {useAuthContext} from "../contex/authProvider";
 
 const NavBar = styled.nav`
   z-index: 1;
@@ -60,7 +60,7 @@ const Login = styled(motion.button)`
 `;
 
 function Header({modal,setModal}){
-    const {isLoggedIn,setUser} = useAuthContex();
+    const {isLoggedIn,setUser} = useAuthContext();
     const handleLogout = async() => {
         await logout();
         setUser(null);
