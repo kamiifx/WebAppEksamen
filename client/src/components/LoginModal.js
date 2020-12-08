@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {motion} from "framer-motion";
 import {useForm} from "react-hook-form";
 import {login} from "../utiils/authService";
+import {useAuthContex} from "../contex/authProvider";
 import {BoxButton} from "../styled/Styled";
 
 const ModalBody = styled(motion.div)`
@@ -100,7 +101,11 @@ const FormButtonContainer = styled.div`
 
 
 function LoginModal({modal,setModalOn}){
+    const [success, setSuccess] = useState(false);
+    const [error,setError] = useState(null);
     const {register,errors,handleSubmit,formState} = useForm({mode:'onBlur'})
+    const {setUser} = useAuthContex();
+
 
 
     const variants = {
@@ -109,6 +114,19 @@ function LoginModal({modal,setModalOn}){
     }
 
 
+    const onSubmit = async (userdata) => {
+        console.log("submit")
+        const {data} = await login(userdata);
+        if (!data.success){
+            console.log(data)
+            setError(data.message);
+        }else {
+            const user = data?.user;
+            const expire = JSON.parse(window.atob(data.token.split('.')[1])).exp;
+            setUser({...user,expire});
+            setSuccess(true);
+        }
+    };
 
     return(
             <ModalBody animate={modal ? "open" : "closed"} variants={variants} transition={{duration:0.45}}  style={{display:modal?"block":"none"}}>
@@ -121,16 +139,16 @@ function LoginModal({modal,setModalOn}){
                         </div>
                         <motion.span  whileHover={{rotate:180}} onClick={() => setModalOn(false)}>&#10005;</motion.span>
                     </ModalHeader>
-                    <form action="">
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <FormInputContainer>
                             <p>Email</p>
-                            <FormInput type="text" placeholder="Email"/>
+                            <FormInput type="text" placeholder="Email" id="email" name="email" ref={register({required:true,})}/>
                             <p>Password</p>
-                            <FormInput type="text" placeholder="Password"/>
+                            <FormInput type="text" placeholder="Password" id="password" name="password" ref={register({required:true,})}/>
                         </FormInputContainer>
                         <FormButtonContainer>
                             <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} type="submit" className="green">Login</BoxButton>
-                            <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} type="submit" className="blue">Register</BoxButton>
+                            <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} className="blue">Register</BoxButton>
                         </FormButtonContainer>
                     </form>
                 </Modal>
