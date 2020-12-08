@@ -1,35 +1,40 @@
 import {userService} from "../services/index.js";
 import { sendToken } from '../utils/jwtToken.js';
+import asyncCatch from "../middleware/asyncCatch.js";
+import errorHandler from "../utils/errorHandler.js"
 
-export const signUp = (async (req, res, next) => {
+export const signUp = asyncCatch(async (req, res, next) => {
     const user = await userService.createUser(req.body);
     sendToken(user, res);
     console.log(user + " is now signed up!");
 
 });
 
-export const login = (async (req, res, next) => {
+export const login = asyncCatch(async (req, res, next) => {
     const {email, password} = req.body;
     if(!email || !password){
-        return console.log(email + "dose not exist or password is wrong");
+        return next(new errorHandler('Enter email and password', 400));
+
     }
 
     const user = await userService.getUserByEmail({ email }, true);
     if (!user) {
-        res.status(400).json("user dose not exist")
-        return console.log( "user dose not exist");
+        return next(new errorHandler('user dose not exist"', 400));
+
     }
 
     const passwordCheck = await user.comparePassword(password);
 
     if(!passwordCheck){
-        return console.log("Password and email do not match");
+        return next(new errorHandler('Password and email do not match"', 400));
+
     }
-    console.log(user + " is now logged in!");
+    console.log(email + " is now logged in!");
+
     sendToken(user, res);
 });
 
-export const logout = (async (req, res, next) => {
+export const logout = asyncCatch(async (req, res, next) => {
     res.cookie('token', 'none', {
         expires: new Date(Date.now()),
         httpOnly: true,
