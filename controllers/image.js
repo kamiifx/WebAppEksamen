@@ -1,9 +1,12 @@
 import path from 'path';
 import { imageService } from '../services/index.js';
+import asyncCatch from "../middleware/asyncCatch.js";
+import errorHandler from "../utils/errorHandler.js";
 
-export const create = (async (req, res, next) => {
+export const create = asyncCatch(async (req, res, next) => {
     if (!req.file) {
-        return next(console.log("Upload a image file"));
+        return next(new errorHandler(`Upload a image file`),400);
+
     }
     const image = await imageService.uploadImage(req.file);
     res.status(201).json({
@@ -12,10 +15,10 @@ export const create = (async (req, res, next) => {
     });
 });
 
-export const get = (async (req, res, next) => {
+export const get = asyncCatch(async (req, res, next) => {
     const image = await imageService.getImageById(req.params.id);
     if (!image) {
-        return next(console.log("did not find image"));
+        return next(new errorHandler(`did not find image ${req.params.id}`),404);
     }
 
     res.set({
@@ -24,6 +27,8 @@ export const get = (async (req, res, next) => {
 
     //res.sendFile(path.join(__dirname, '..', image.file_path));
       const imagePath = image.file_path.replace('public/', '');
-      res.status(200).json({success: true, data: { image, imagePath },
-      });
+    res.status(200).json({
+        success: true,
+        data: image, imagePath
+    });
 });

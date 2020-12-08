@@ -1,7 +1,8 @@
 import Image from '../models/image.js'
 
 
-//export const uploadImage = async (data) => Office.create(data);
+//export const uploadImage = async (data) => Image.create(data);
+
 export const uploadImage = async (data) => {
     const image = new Image({
         file_path: data.path,
