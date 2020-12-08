@@ -1,10 +1,20 @@
 import {userService} from "../services/index.js";
 import { sendToken } from '../utils/jwtToken.js';
 import asyncCatch from "../middleware/asyncCatch.js";
-import errorHandler from "../utils/errorHandler.js"
+import errorHandler from "../utils/errorHandler.js";
+import { sendMail } from '../utils/email.js';
 
 export const signUp = asyncCatch(async (req, res, next) => {
     const user = await userService.createUser(req.body);
+    try {
+        await sendMail({
+            email: user.email,
+            subject: 'Velkommen som bruker',
+            message: `Du har fått en ny brukerkonto med epost: ${user.email}`,
+        });
+    } catch (error) {
+        console.log(error);
+    }
     sendToken(user, res);
     console.log(user + " is now signed up!");
 

@@ -6,7 +6,7 @@ import errorHandler from "../utils/errorHandler.js";
 export const get = asyncCatch(async (req, res, next) => {
     const user = await userService.getUserById(req.params.id);
     if(!user){
-        return next(new errorHandler(`Can not find office ${req.params.id}`, 404));
+        return next(new errorHandler(`Can not find user ${req.params.id}`, 404));
     }
     res.status(200).json(user);
 });
@@ -23,7 +23,7 @@ export const list = asyncCatch(async (req, res, next) => {
 export const remove = asyncCatch(async (req, res, next) => {
     const user = await userService.removeUser(req.params.id);
     if(!user){
-        return next(new errorHandler(`Can not find office ${req.params.id}`, 404));
+        return next(new errorHandler(`Can not find user ${req.params.id}`, 404));
     }
     res.status(204).json({});
 });
@@ -31,7 +31,10 @@ export const remove = asyncCatch(async (req, res, next) => {
 export const currentUser = asyncCatch(async (req, res, next) => {
     const user = await  userService.getUserById(req.user.id);
     if(!user){
-        return next(new errorHandler(`Can not find office ${req.params.id}`, 404));
+        return next(new errorHandler(`Can not find user ${req.params.id}`, 404));
     }
-    res.status(200).json(user)
+    res.status(200).json({
+        success: true,
+        data: user,
+    });
 });
