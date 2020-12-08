@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {motion} from "framer-motion";
+import {useForm} from "react-hook-form";
+import {login} from "../utiils/authService";
+import {useAuthContex} from "../contex/authProvider";
 import {BoxButton} from "../styled/Styled";
+import {useHistory} from 'react-router-dom';
 
 const ModalBody = styled(motion.div)`
 position: absolute;
@@ -9,7 +13,6 @@ position: absolute;
   width: 100%;
   height: 100%;
 `
-
 const Modal = styled.div`
   z-index: 20;
   position: absolute;
@@ -23,7 +26,6 @@ const Modal = styled.div`
   border-radius: 1rem;
   box-shadow:${({ theme }) => theme.shadows.lg} ;
 `;
-
 const ModalHeader = styled.div`
   display: flex;
   flex-direction: row;
@@ -68,7 +70,6 @@ const ModalHeader = styled.div`
   }
   }
 `;
-
 const FormInputContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -81,7 +82,6 @@ const FormInputContainer = styled.div`
   color:${({ theme }) => theme.colors.grayed} ;
   }
 `;
-
 const FormInput = styled.input`
   width: 22rem;
   height: 3rem;
@@ -97,12 +97,40 @@ const FormButtonContainer = styled.div`
   justify-content: center;
   gap: 25px;
 `
+
+
+
+
 function LoginModal({modal,setModalOn}){
+    const [success, setSuccess] = useState(false);
+    const [error,setError] = useState(null);
+    const {register,errors,handleSubmit,formState} = useForm({mode:'onBlur'})
+    const {setUser} = useAuthContex();
+    const history = useHistory();
+
+
 
     const variants = {
         open:{scale:[0,1,1.1,1]},
         closed:{opacity:0}
     }
+
+
+    const onSubmit = async (userdata) => {
+        console.log("submit")
+        const {data} = await login(userdata);
+        if (!data.success){
+            console.log(data)
+            setError(data.message);
+        }else {
+            const user = data?.user;
+            const expire = JSON.parse(window.atob(data.token.split('.')[1])).exp;
+            setUser({...user,expire});
+            setSuccess(true);
+            history.push('/')
+            setModalOn(false)
+        }
+    };
 
     return(
             <ModalBody animate={modal ? "open" : "closed"} variants={variants} transition={{duration:0.45}}  style={{display:modal?"block":"none"}}>
@@ -115,16 +143,16 @@ function LoginModal({modal,setModalOn}){
                         </div>
                         <motion.span  whileHover={{rotate:180}} onClick={() => setModalOn(false)}>&#10005;</motion.span>
                     </ModalHeader>
-                    <form action="">
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <FormInputContainer>
                             <p>Email</p>
-                            <FormInput type="text" placeholder="Email"/>
+                            <FormInput type="text" placeholder="Email" id="email" name="email" ref={register({required:true,})}/>
                             <p>Password</p>
-                            <FormInput type="text" placeholder="Password"/>
+                            <FormInput type="text" placeholder="Password" id="password" name="password" ref={register({required:true,})}/>
                         </FormInputContainer>
                         <FormButtonContainer>
                             <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} type="submit" className="green">Login</BoxButton>
-                            <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} type="submit" className="blue">Register</BoxButton>
+                            <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} className="blue">Register</BoxButton>
                         </FormButtonContainer>
                     </form>
                 </Modal>

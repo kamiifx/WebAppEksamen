@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import {LinkNavbar,LeftDivNav} from '../styled/Styled'
 import {motion} from "framer-motion";
+import {logout} from "../utiils/authService";
+import {useAuthContex} from "../contex/authProvider";
 
 const NavBar = styled.nav`
   z-index: 1;
@@ -44,6 +46,9 @@ const Login = styled(motion.button)`
   border: none;
   left: 0;
   background-color: ${({theme}) => theme.colors.accept};
+  &.logout{
+  background-color: ${({theme}) => theme.colors.redDeny};
+  }
   &:hover{
     transition: 0.5s ease-in-out;
     background-color:${({theme}) => theme.colors.acceptHover} ;
@@ -55,6 +60,11 @@ const Login = styled(motion.button)`
 `;
 
 function Header({modal,setModal}){
+    const {isLoggedIn,setUser} = useAuthContex();
+    const handleLogout = async() => {
+        await logout();
+        setUser(null);
+    }
     return(
         <header>
             <NavBar>
@@ -64,7 +74,13 @@ function Header({modal,setModal}){
                     <LinkNavbar href="/">Kontorer</LinkNavbar>
                     <LinkNavbar href="/articles">Fagartikler</LinkNavbar>
                     <LinkNavbar href="/">Kontakt</LinkNavbar>
-                    <Login whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }}   onClick={() => setModal(true)}>Login</Login>
+                    {!isLoggedIn &&(
+                        <Login whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }}   onClick={() => setModal(true)}>Login</Login>
+                    )}
+                    {isLoggedIn &&(
+                        <Login whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} className="logout"   onClick={handleLogout}>Logout</Login>
+                    )}
+
                 </LeftDivNav>
             </NavBar>
         </header>
