@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {motion} from "framer-motion";
+import {useForm} from "react-hook-form";
+import {login} from "../utiils/authService";
 import {BoxButton} from "../styled/Styled";
 
 const ModalBody = styled(motion.div)`
@@ -9,7 +11,6 @@ position: absolute;
   width: 100%;
   height: 100%;
 `
-
 const Modal = styled.div`
   z-index: 20;
   position: absolute;
@@ -23,7 +24,6 @@ const Modal = styled.div`
   border-radius: 1rem;
   box-shadow:${({ theme }) => theme.shadows.lg} ;
 `;
-
 const ModalHeader = styled.div`
   display: flex;
   flex-direction: row;
@@ -68,7 +68,6 @@ const ModalHeader = styled.div`
   }
   }
 `;
-
 const FormInputContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -81,7 +80,6 @@ const FormInputContainer = styled.div`
   color:${({ theme }) => theme.colors.grayed} ;
   }
 `;
-
 const FormInput = styled.input`
   width: 22rem;
   height: 3rem;
@@ -97,12 +95,20 @@ const FormButtonContainer = styled.div`
   justify-content: center;
   gap: 25px;
 `
+
+
+
+
 function LoginModal({modal,setModalOn}){
+    const {register,errors,handleSubmit,formState} = useForm({mode:'onBlur'})
+
 
     const variants = {
         open:{scale:[0,1,1.1,1]},
         closed:{opacity:0}
     }
+
+
 
     return(
             <ModalBody animate={modal ? "open" : "closed"} variants={variants} transition={{duration:0.45}}  style={{display:modal?"block":"none"}}>
