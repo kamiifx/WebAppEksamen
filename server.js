@@ -10,10 +10,12 @@ import office from './routes/office.js';
 import auth from './routes/auth.js';
 import article from './routes/article.js';
 import image from './routes/image.js';
+import errorMiddle from './middleware/error.js'
 
 const app = express();
 env.config();
 app.use(express.json());
+
 app.use(express.static(`./public`));
 
 app.use(morgan('dev'));
@@ -23,20 +25,22 @@ app.use(`${process.env.BASEURL}/offices`, office);
 app.use(`${process.env.BASEURL}/users`, user);
 app.use(`${process.env.BASEURL}/`, auth);
 app.use(`${process.env.BASEURL}/articles`, article);
-app.use(`${process.env.BASEURL}/`, image);
-
-
-
-
-
-
-
+app.use(`${process.env.BASEURL}/`, image);app.use(errorMiddle);
 
 
 
 connectDatabase();
 const PORT = process.env.PORT || 5000;
+
 const server = app.listen(
     PORT,
-    console.log(`Server running on port : ${PORT}`)
+    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 );
+
+process.on('unhandledRejection', (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log('Shutting down server due to Unhandled Promise Rejection');
+    server.close(() => {
+        process.exit(1);
+    });
+});

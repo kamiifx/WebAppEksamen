@@ -1,10 +1,12 @@
+//tatt fra forelesning
 import multer from 'multer';
-
+import errorHandler from "../utils/errorHandler.js";
 
 function fileFilter(req, file, cb) {
     const filetypes = /\.(jpeg|jpg|png)$/;
     if (!file.originalname.match(filetypes)) {
-        return cb(new console.log('Kun bildefiler er lov'));
+        return cb(new errorHandler('Can only upload image files (jpeg, jpg, png)', 400));
+
     }
     cb(null, true);
 }
