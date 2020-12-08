@@ -7,6 +7,10 @@ const articleValues = {
         'string.min': 'Minimum 2 character',
 
     }),
+    ingress: Joi.string().required().messages({
+        'string.empty': 'Enter ingress',
+        'any.required': 'Enter ingress!',
+    }),
     paragraph: Joi.array().items(Joi.string().min(10)).required().messages({
         'string.empty': 'Enter paragraph',
         'any.required': 'Enter paragraph',
@@ -16,7 +20,11 @@ const articleValues = {
         'string.empty': 'Enter paragraph',
         'any.required': 'Enter paragraph',
         'string.min': 'Minimum 2 character',
-    })
+    }),
+    category: Joi.string().required().messages({
+        'string.empty': 'Enter category',
+        'any.required': 'Enter category!',
+    }),
 
 };
 
