@@ -7,7 +7,7 @@ import {userSchema} from '../schemas/index.js';
 
 const router = express.Router();
 
-router.post('/signUp', validateFields(userSchema.signUpSchema), authController.signUp);
+router.post('/signup', validateFields(userSchema.signUpSchema), authController.signUp);
 router.post('/login',  validateFields(userSchema.loginSchema), authController.login);
 router.post('/logout', authController.logout);
 router.get('/me', authentication, userController.currentUser);

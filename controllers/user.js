@@ -6,7 +6,6 @@ export const get = (async (req, res, next) => {
     res.status(200).json(user);
 });
 
-
 export const create = (async (req, res, next) => {
     const user = await userService.createUser(req.body);
     res.status(201).json(user);

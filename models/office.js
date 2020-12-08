@@ -24,13 +24,11 @@ const OfficeSchema = new Schema(
         },
         location: {
             type: String,
-
             required: true,
         },
         email: {
             type: String,
             required: true,
-            //validate: [validator.isEmail("Email not valid")]
         },
     }
 );
