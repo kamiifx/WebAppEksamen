@@ -24,7 +24,7 @@ const ArticleSchema = new Schema(
         },
         category: {
             type: String,
-            //required: true,
+            required: true,
         },
     },
     { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
