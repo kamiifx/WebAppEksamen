@@ -4,7 +4,10 @@ import {motion} from "framer-motion";
 import {useForm} from "react-hook-form";
 import {login,create} from "../utiils/authService";
 import {useAuthContext} from "../contex/authProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {BoxButton} from "../styled/Styled";
+
 
 const ModalBody = styled(motion.div)`
 position: absolute;
@@ -18,7 +21,7 @@ const Modal = styled(motion.div)`
   top: 50%;
   left: 50%;
   width: 30rem;
-  height: 30rem;
+  height: 32rem;
   background-color: ${({ theme }) => theme.colors.default};
   margin-right: -50%;
   transform: translate(-50%, -50%); 
@@ -125,8 +128,8 @@ function LoginModal({modal,setModalOn}){
         if (reg === false){
             const {data} = await login(userdata);
             if (!data.success){
-                console.log(data)
-                setError(data.message);
+                setError(data.message[0].message);
+                toast.error(data.message[0].message)
             }else {
                 const user = data?.user;
                 const expire = JSON.parse(window.atob(data.token.split('.')[1])).exp;
@@ -136,13 +139,18 @@ function LoginModal({modal,setModalOn}){
             }
         }else {
             const data = await create(userdata);
-            setSuccess(true);
-            setModalOn(false);
+            if(!data.success){
+                toast.error(data.message[0].message)
+            }else {
+                setModalOn(false);
+                setSuccess(true);
+            }
         }
     };
 
     return(
             <ModalBody animate={modal ? "open" : "closed"} variants={variants} transition={{duration:0.45}}  style={{display:modal?"block":"none"}}>
+                <ToastContainer/>
                 <Modal animate={reg? "true":"false"} variants={variants2}>
                     <ModalHeader>
                         <img src="https://img.icons8.com/pastel-glyph/2x/plumbing.png" alt=""/>
