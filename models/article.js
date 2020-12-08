@@ -19,13 +19,16 @@ const ArticleSchema = new Schema(
         },
         subtitle:{
             type: Array(String),
-
             required: true,
         },
         category: {
             type: String,
             required: true,
         },
+        secret:{
+            type: Boolean,
+            required: true,
+        }
     },
     { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
