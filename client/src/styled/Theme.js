@@ -8,11 +8,14 @@ const theme = {
         default:'#F7FAFC',
         header:'#DBDBDB',
         greenAccept:'#68D391',
+        greenHover: '#48BB78',
         redDeny:'#FC8181',
         alert:'#E53E3E',
         accept:'#63B3ED',
         acceptHover: '#90CDF4',
-        grayText:'#718096'
+        grayText:'#718096',
+        grayed:'#4A5568',
+        framerBlue:'#0077FF'
     },
     shadows:{
         sm:'0px 0px 25px 0px rgba(0,0,0,0.25);',

@@ -1,52 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
-import {Header} from "../styled/Styled";
+import React, {useState} from 'react';
+import LoginModal from "./LoginModal";
+import {Header, FlexBox, FlexItemBox, Footer,Main} from "../styled/Styled";
 
-const FlexBox = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 13%;
-  max-width: 94%;
-`
+function Home({modal,setModal}){
 
-const FlexItemBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30rem;
-  height: 30rem;
-  background-color:${({ theme }) => theme.colors.header};
-  margin-left: 20px;
-  &.med{
-  width: 84.7rem;
-  }
-  &.big{
-  margin-top: 35px;
-  width: 116rem;
-  height: 35rem;
-  margin-bottom: 6rem;
-  }
-  a{
-    text-decoration: none;
-    color: black;
-    font-family: 'Roboto',sans-serif;
-    font-size: 60px;
-    font-weight: 600;
-  }
-`
-
-function Home(){
     return(
-        <main>
-            <Header>
-                <h2>Velkommer til FG Rørleggerservice AS</h2>
-            </Header>
-            <FlexBox>
-                <FlexItemBox><a href="/">Kontorer</a></FlexItemBox>
-                <FlexItemBox className="med"><a href="/">Kontakt</a></FlexItemBox>
-                <FlexItemBox className="big"><a href="/articles">Se våre fagartikler om oppussing av bad</a></FlexItemBox>
-            </FlexBox>
-        </main>
+        <div>
+            <LoginModal modal={modal} setModalOn={setModal}/>
+            <Main>
+                <Header>
+                    <h2>Velkommer til FG Rørleggerservice AS</h2>
+                </Header>
+                <FlexBox>
+                    <FlexItemBox className="office" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}><a href="/">Kontorer</a></FlexItemBox>
+                    <FlexItemBox whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} className="med"><a href="/">Kontakt</a></FlexItemBox>
+                    <FlexItemBox whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} className="big"><a href="/articles">Se våre fagartikler om oppussing av bad</a></FlexItemBox>
+                </FlexBox>
+            </Main>
+            <Footer>
+                <div>
+                    <p>Orgnr: 007 007 007</p>
+                    <p>lg@igror.no</p>
+                    <p>99 00 00 00</p>
+                </div>
+            </Footer>
+        </div>
     )
 }
 
