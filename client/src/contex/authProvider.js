@@ -23,7 +23,7 @@ const AuthProvider = ({children}) => {
         };
         fetchUserData();
     },[user])
-    return <Provider value={{isLoading:loading,isAdmin:user?.role === 'admin',isLoggedIn:!!user,user,setUser}}>{children}</Provider>
+    return <Provider value={{isLoading:loading,isAdmin:user?.role==='admin',isLoggedIn:!!user,user,setUser}}>{children}</Provider>
 };
 
 export const useAuthContext = () => useContext(authContext);
