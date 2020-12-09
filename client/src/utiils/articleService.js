@@ -17,3 +17,11 @@ export const get = async (id) => {
         return err.response;
     }
 }
+
+export const create = async (data) => {
+    try{
+        return await http.post(`${API}`,data)
+    }catch (err){
+        return err.response;
+    }
+}

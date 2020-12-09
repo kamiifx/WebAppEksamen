@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get(`/:id`, articleController.get);
 router.get('/', articleController.list);
-router.post('/', [authentication, authorization('admin')], validateFields(articleSchema.createArticleSchema), articleController.create);
+router.post('/', [authentication, authorization('admin')], articleController.create);
 router.put('/:id', [authentication, authorization('admin')], articleController.update);
 router.delete('/:id', [authentication, authorization('admin')], articleController.remove);
 

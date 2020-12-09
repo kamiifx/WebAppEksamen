@@ -27,7 +27,7 @@ const ArticleSchema = new Schema(
         },
         secret:{
             type: Boolean,
-            required: true,
+            required: false,
         }
     },
     { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
