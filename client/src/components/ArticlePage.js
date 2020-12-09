@@ -17,16 +17,13 @@ function ArticlePage(){
 
     return(
         <div>
-            {article && (
-                <div>
-                    <p>{article.author}</p>
-                    <p>{article.title}</p>
-                    <p>{article.subtitle[0]}</p>
-                    <p>{article.paragraph[0]}</p>
-                    <p>{article.subtitle[1]}</p>
-                    <p>{article.paragraph[1]}</p>
+            {article &&
+            article.subtitle.map((articles) => (
+                <div key={articles.id}>
+                    <p>{articles}</p>
                 </div>
-            )}
+            ))
+            }
         </div>
     )
 }

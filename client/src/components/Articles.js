@@ -17,8 +17,6 @@ function Articles(){
             const {data,error} = await list();
             console.log(data)
             console.log(isAdmin.toString())
-
-
             if (error){
                 setError(error)
             }else {
@@ -50,7 +48,7 @@ function Articles(){
                             <a href={`/articles/${articles.id}`}>BILDE</a>
                             <ArticleIntro>
                                 <h2>{articles.tittle}</h2>
-                                <p>{articles.paragraph[0]}</p>
+                                <p>{articles.ingress}</p>
                             </ArticleIntro>
                             <h4 className="kat">kategori</h4>
                         </ArticleBlock>

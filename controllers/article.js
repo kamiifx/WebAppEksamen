@@ -7,11 +7,11 @@ export const get = asyncCatch(async (req, res, next) => {
     if(!article){
         return next(new errorHandler(`can not find article with id ${req.params.id}`),404);
     }
-    res.status(201).json({ success: true, data: article });
+    res.status(201).json(article);
 });
 export const list = asyncCatch(async (req, res, next) => {
     const articles = await articleService.listAllArticles();
-    res.status(200).json({ success: true, data: articles });
+    res.status(200).json(articles);
 });
 
 

@@ -8,8 +8,8 @@ import Contact from './components/Contact';
 import ArticlePage from "./components/ArticlePage";
 import AuthProvider from "./contex/authProvider";
 import CreateArticle from "./components/CreateArticle";
-
-function App() {
+import Offices from "./components/Offices";
+    function App() {
     const [modal,ToggleModal] = useState(false);
   return (
       <>
@@ -21,6 +21,7 @@ function App() {
                           <Route exact path="/" component={() => <Home modal={modal} setModal={ToggleModal}/>}/>
                           <Route exact path="/articles" component={Articles}/>
                           <Route exact path="/contact" component={Contact}/>
+                          <Route exact path="/offices" component={Offices}/>
                           <Route exact path="/articles/:id" component={ArticlePage}/>
                           <Route exact path="/article/create" component={CreateArticle}/>
                       </AuthProvider>

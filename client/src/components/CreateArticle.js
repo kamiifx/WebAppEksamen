@@ -24,6 +24,7 @@ function CreateArticle(){
         const {data} = await create(userdata)
         if (!data.success){
             setError(data.message)
+            console.log("here ?")
         }else {
             setSuccess(true);
             setTimeout(() => {
@@ -37,7 +38,7 @@ function CreateArticle(){
     const {register,control,handleSubmit} = useForm()
     const {fields,append,remove} = useFieldArray({
         control,
-        name:''
+        name:'subtitle',
     })
     const addSection = (e) => {
         append({})
