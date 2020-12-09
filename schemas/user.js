@@ -10,19 +10,25 @@ const userValues = {
         'string.email': 'Email format is wrong',
 
     }),
-    password: Joi.string().regex(new RegExp('^[a-z&&A-Z&&0-9]{3,30}$')).required().messages({
+    password: Joi.string().required().messages({
+        'string.empty': 'Enter password',
+        'any.required': 'Enter password',
+
+
+    })
+};
+const signUpValues = {
+    name: Joi.string().regex(/^[ a-zA-Z]+$/, 'correct pattern, must only contain letters in the').required().messages({
+        'string.empty': 'Enter full name',
+        'any.required': 'Enter full name!',
+
+    }),
+    password: Joi.string().regex(/'^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{3,}$correct pattern, must only at least contain 1 number and minimun 3 characters in the'/, ).required().messages({
         'string.empty': 'Enter password',
         'any.required': 'Enter password',
         'string.min': 'Minimum 6 character',
         'regex': 'must contain at least 1 numeric value'
 
-    })
-
-};
-const signUpValues = {
-    name: Joi.string().required().messages({
-        'string.empty': 'Enter full name',
-        'any.required': 'Enter full name!',
     })
 }
 

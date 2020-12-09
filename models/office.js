@@ -30,6 +30,10 @@ const OfficeSchema = new Schema(
             type: String,
             required: true,
         },
+        employees:{
+            type:Array,
+            required: true,
+        }
     }
 );
 

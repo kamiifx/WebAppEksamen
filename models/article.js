@@ -8,20 +8,27 @@ const ArticleSchema = new Schema(
             minlength: [2, 'Minimum two characters'],
             required: true,
         },
+        ingress:{
+            type:String,
+            required: true,
+        },
         paragraph: {
             type: Array(String),
-            minlength: [10, 'Minimum 10 characters'],
+
             required: true,
         },
         subtitle:{
             type: Array(String),
-            minlength: [2, 'Minimum two characters'],
             required: true,
         },
-        email: {
+        category: {
             type: String,
-            //required: true,
+            required: true,
         },
+        secret:{
+            type: Boolean,
+            required: true,
+        }
     },
     { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

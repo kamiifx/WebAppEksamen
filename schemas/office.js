@@ -25,6 +25,9 @@ const officeValues = {
         'any.required': 'Enter email!',
         'string.email': 'Email format is wrong',
     }),
+    employees:Joi.array().required().messages({
+        'any.required': 'Enter Name (employees)!',
+    }),
 
 };
 

@@ -10,6 +10,7 @@ import office from './routes/office.js';
 import auth from './routes/auth.js';
 import article from './routes/article.js';
 import image from './routes/image.js';
+import inquire from './routes/inquire.js';
 import errorMiddle from './middleware/error.js'
 
 const app = express();
@@ -25,6 +26,7 @@ app.use(`${process.env.BASEURL}/offices`, office);
 app.use(`${process.env.BASEURL}/users`, user);
 app.use(`${process.env.BASEURL}/`, auth);
 app.use(`${process.env.BASEURL}/articles`, article);
+app.use(`${process.env.BASEURL}/inquires`, inquire);
 app.use(`${process.env.BASEURL}/`, image);app.use(errorMiddle);
 
 
