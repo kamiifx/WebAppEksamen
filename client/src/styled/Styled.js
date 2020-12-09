@@ -183,3 +183,59 @@ export const Footer = styled.footer`
   font-family: 'Roboto',sans-serif;
   }
 `
+export const FormInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 13%;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-family: 'Roboto',sans-serif;
+  p{
+  font-size: 20px;
+  color:${({ theme }) => theme.colors.grayed} ;
+  }
+`;
+export const FormInput = styled(motion.input)`
+  width: 22rem;
+  height: 3rem;
+  border-radius: 7px;
+  border:none;
+  font-family: 'Roboto',sans-serif;
+  font-size: 18px;
+  color:${({ theme }) => theme.colors.grayText};
+  &.border{
+  border: 1px solid ${({ theme }) => theme.colors.grayText};
+  }
+`;
+export const FormInputBig = styled(FormInput)`
+  width: 55rem;
+`
+
+
+export const FormButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+`;
+
+export const FormContainer = styled.form`
+  display: flex;
+  justify-content: center;
+`;
+
+export const MotionButton = styled.button`
+  display: flex;
+  width: 2rem;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  border:none;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+`

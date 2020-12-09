@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 import {list} from '../utiils/articleService';
+
 import {Header,Container,ArticleBlock,ArticleIntro,BoxButton} from '../styled/Styled';
+import {useAuthContext} from "../contex/authProvider";
 
 
 
@@ -10,6 +12,8 @@ import {Header,Container,ArticleBlock,ArticleIntro,BoxButton} from '../styled/St
 function Articles(){
     const [articles, setArticles] = useState(null)
     const [error, setError] = useState(null)
+    const { isLoggedIn, isAdmin } = useAuthContext();
+
     useEffect(() => {
         const fetchData = async () => {
             const {data,error} = await list();
@@ -30,7 +34,9 @@ function Articles(){
             </Header>
 
             <Container>
-                <BoxButton className="blue">NY ARTIKKEL</BoxButton>
+                {isLoggedIn && isAdmin &&(
+                    <BoxButton className="blue">NY ARTIKKEL</BoxButton>
+                )}
                 <Container className="left">
                     <BoxButton>SØK</BoxButton>
                     <BoxButton>FILTER</BoxButton>

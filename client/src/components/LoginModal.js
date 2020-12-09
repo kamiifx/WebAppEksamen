@@ -6,7 +6,7 @@ import {login,create} from "../utiils/authService";
 import {useAuthContext} from "../contex/authProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {BoxButton} from "../styled/Styled";
+import {BoxButton,FormButtonContainer,FormInput,FormInputContainer} from "../styled/Styled";
 
 
 const ModalBody = styled(motion.div)`
@@ -72,33 +72,6 @@ const ModalHeader = styled.div`
   }
   }
 `;
-const FormInputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 13%;
-  justify-content: center;
-  margin-bottom: 40px;
-  font-family: 'Roboto',sans-serif;
-  p{
-  font-size: 20px;
-  color:${({ theme }) => theme.colors.grayed} ;
-  }
-`;
-const FormInput = styled.input`
-  width: 22rem;
-  height: 3rem;
-  border-radius: 7px;
-  border:none;
-  font-family: 'Roboto',sans-serif;
-  font-size: 18px;
-  color:${({ theme }) => theme.colors.grayText} ;
-`
-const FormButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 25px;
-`
 
 
 
@@ -108,7 +81,7 @@ function LoginModal({modal,setModalOn}){
     const [success, setSuccess] = useState(false);
     const [error,setError] = useState(null);
     const [reg,setReg] = useState(false);
-    const {register,errors,handleSubmit,formState} = useForm({mode:'onBlur'})
+    const {register,errors,handleSubmit} = useForm({mode:'onBlur'})
     const {setUser} = useAuthContext();
 
 
@@ -129,7 +102,9 @@ function LoginModal({modal,setModalOn}){
             const {data} = await login(userdata);
             if (!data.success){
                 setError(data.message[0].message);
-                toast.error(data.message[0].message)
+                toast.error(data.message[0].message);
+                toast.error(data.message);
+
             }else {
                 const user = data?.user;
                 const expire = JSON.parse(window.atob(data.token.split('.')[1])).exp;
@@ -140,7 +115,8 @@ function LoginModal({modal,setModalOn}){
         }else {
             const data = await create(userdata);
             if(!data.success){
-                toast.error(data.message[0].message)
+                toast.error(data.message[0].message);
+                toast.error(data.message);
             }else {
                 setModalOn(false);
                 setSuccess(true);

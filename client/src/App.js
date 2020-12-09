@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Articles from './components/Articles';
 import ArticlePage from "./components/ArticlePage";
 import AuthProvider from "./contex/authProvider";
+import CreateArticle from "./components/CreateArticle";
 
 function App() {
     const [modal,ToggleModal] = useState(false);
@@ -19,6 +20,7 @@ function App() {
                           <Route exact path="/" component={() => <Home modal={modal} setModal={ToggleModal}/>}/>
                           <Route exact path="/articles" component={Articles}/>
                           <Route exact path="/articles/:id" component={ArticlePage}/>
+                          <Route exact path="/article/create" component={CreateArticle}/>
                       </AuthProvider>
                   </BrowserRouter>
               </div>
