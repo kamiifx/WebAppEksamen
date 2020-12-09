@@ -4,6 +4,7 @@ import Theme from "./styled/Theme";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Articles from './components/Articles';
+import Contact from './components/Contact';
 import ArticlePage from "./components/ArticlePage";
 import AuthProvider from "./contex/authProvider";
 
@@ -19,6 +20,7 @@ function App() {
                           <Route exact path="/" component={() => <Home modal={modal} setModal={ToggleModal}/>}/>
                           <Route exact path="/articles" component={Articles}/>
                           <Route exact path="/articles/:id" component={ArticlePage}/>
+                          <Route exact path="/contact" component={Contact}/>
                       </AuthProvider>
                   </BrowserRouter>
               </div>
