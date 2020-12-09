@@ -1,7 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import styled from 'styled-components';
 import {list} from '../utiils/articleService';
-
 import {Header,Container,ArticleBlock,ArticleIntro,BoxButton} from '../styled/Styled';
 import {useAuthContext} from "../contex/authProvider";
 
@@ -34,7 +32,7 @@ function Articles(){
             </Header>
 
             <Container>
-                {isLoggedIn && isAdmin &&(
+                {isLoggedIn&&isAdmin&&(
                     <BoxButton className="blue">NY ARTIKKEL</BoxButton>
                 )}
                 <Container className="left">
