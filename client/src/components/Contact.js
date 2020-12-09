@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import {Header,Container,ArticleBlock,ArticleIntro,BoxButton} from '../styled/Styled';
 import { create } from '../utiils/contactService.js';
 import { useForm } from 'react-hook-form';
+import {useAuthContext} from "../contex/authProvider.js";
+import {getCurrent} from "../utiils/authService";
 
 
 
@@ -12,11 +14,16 @@ function Contact(){
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
     const history = useHistory();
+    const {setUser} = useAuthContext();
+
     const { register, errors, handleSubmit, formState } = useForm({
         mode: 'onBlur',
     });
 
+
     const onSubmit = async (formData) => {
+
+        console.log( + " test");
         const { data } = await create(formData);
         if (!data.success) {
             setCloseBtnState(true);
@@ -24,9 +31,7 @@ function Contact(){
         } else {
             setSuccess(true);
             setError(null);
-            setTimeout(() => {
-                history.push(`/events/${data.data.id}`);
-            }, 2000);
+
         }
     };
 
@@ -42,6 +47,7 @@ function Contact(){
                 <input id="from"
                        placeholder="from"
                        name="from"
+
                        type="from"
                        ref={register({
                            required: true,
