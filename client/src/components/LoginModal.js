@@ -149,7 +149,7 @@ function LoginModal({modal,setModalOn}){
                                 </div>
                             )}
                         </FormInputContainer>
-                        <FormButtonContainer>
+                        <FormButtonContainer className="center">
                             <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} type="submit" className="green">{reg? "Register": "Login"}</BoxButton>
                             <BoxButton style={{display:reg?"none":"block"}} whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} onClick={()=> setReg(!reg)} className="blue">Register</BoxButton>
                         </FormButtonContainer>

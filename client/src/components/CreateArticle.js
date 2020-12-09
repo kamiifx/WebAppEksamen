@@ -1,6 +1,6 @@
 import React from 'react';
 import {motion,AnimatePresence} from "framer-motion";
-import {useForm,useFieldArray,useWatch} from "react-hook-form";
+import {useForm,useFieldArray} from "react-hook-form";
 import {
     FormInput,
     FormInputContainer,
@@ -8,11 +8,13 @@ import {
     FormTextArea,
     FormButtonContainer,
     BoxButtonSmall,
-    BoxButton
+    BoxButtonMarg,
 } from '../styled/Styled.js';
 
 
 function CreateArticle(){
+
+
     const {register,control} = useForm()
     const {fields,append,remove} = useFieldArray({
         control,
@@ -34,14 +36,19 @@ function CreateArticle(){
                 <FormInput className="border" type="text" placeholder="Tittel" id="tittel" name="tittle"/>
                 <p>Ingress</p>
                 <FormTextArea className="border" type="text" placeholder="Ingress" id="ingress" name="ingress"/>
-                <BoxButtonSmall className="green" onClick={addSection}>Add section</BoxButtonSmall>
-                {fields.map(({id}) =>(
+                <p>Kategori</p>
+                <FormInput className="border" type="text" placeholder="kategori" id="category" name="category"/>
+                <FormButtonContainer>
+                    <BoxButtonSmall className="green" onClick={addSection}>Add section</BoxButtonSmall>
+                    <BoxButtonSmall className="green">Secret</BoxButtonSmall>
+                </FormButtonContainer>
+                {fields.map(({id}, index) =>(
                     <AnimatePresence>
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} key={id}>
-                            <p>Subtittel</p>
-                            <FormInput className="border" type="text" placeholder="Subtitle" id="subtitle" name="subtitle"/>
-                            <p>Paragraf</p>
-                            <FormTextArea className="border" type="text" placeholder="Paragraf" id="paragraf" name="paragraph"/>
+                            <p>Subtittel {index}</p>
+                            <FormInput className="border" type="text" placeholder="Subtitle" id="subtitle" name="subtitle" ref={register}/>
+                            <p>Paragraf {index}</p>
+                            <FormTextArea className="border" type="text" placeholder="Paragraf" id="paragraf" name="paragraph" ref={register}/>
                             <FormButtonContainer>
                                 <BoxButtonSmall className="red" onClick={removeSection}>Remove</BoxButtonSmall>
                             </FormButtonContainer>
@@ -49,7 +56,7 @@ function CreateArticle(){
                     </AnimatePresence>
                 ))}
                 {fields.length > 0 &&(
-                    <BoxButton className="blue">Publish</BoxButton>
+                    <BoxButtonMarg className="blue">Publish</BoxButtonMarg>
                 )}
             </FormInputContainer>
         </FormContainer>

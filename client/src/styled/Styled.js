@@ -41,6 +41,10 @@ export const BoxButtonSmall = styled(BoxButton)`
   width: 5rem;
   height: 2.5rem;
   font-size: 13px;
+`;
+
+export const BoxButtonMarg = styled(BoxButton)`
+  margin-top: 25px;
 `
 
 export const Main = styled.main`
@@ -235,8 +239,10 @@ export const FormTextArea = styled.textarea`
 export const FormButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
   gap: 25px;
+  &.center{
+  justify-content: center;
+  }
 `;
 
 export const FormContainer = styled.form`
@@ -259,4 +265,7 @@ export const MotionButton = styled.button`
   border-radius: 5px;
   -webkit-transition: .2s;
   transition: opacity .2s;
+`
+export const Check = styled.input`
+  
 `
