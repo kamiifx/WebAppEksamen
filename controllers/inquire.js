@@ -10,9 +10,9 @@ export const create = asyncCatch(async (req, res, next) => {
     try {
         await sendMail({
             from: req.body.from,
-            email:  req.body.to,
+            email:  "admin@damin.com",
             subject: 'Henvendelse',
-            message: req.body.data,
+            message: req.body.message,
         });
     } catch (error) {
         console.log(error);

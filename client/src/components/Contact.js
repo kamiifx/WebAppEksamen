@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{ useState,useEffect } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import {Header,Container,ArticleBlock,ArticleIntro,BoxButton} from '../styled/Styled';
@@ -15,44 +15,39 @@ function Contact(){
     const [success, setSuccess] = useState(false);
     const history = useHistory();
     const {user, setUser} = useAuthContext();
+    const [currentUserName, setCurrentUserName] = useState(null);
+    const [currentUserEmail, setCurrentUserEmail] = useState(null);
     const [loading, setLoading] = useState(false)
-    const [formData, setFormData] = useState({
-        from: '',
-        to: 'asd',
-        data: '',
-    });
+    //const [fromData, setFormData] = useState(null);
     const { register, errors, handleSubmit, formState } = useForm({
         mode: 'onBlur',
     });
-    useEffect(() => {
+
+    useEffect( () =>   {
         const fetchUserData = async () => {
-            if (user === null){
-                setLoading(true);
-                try {
-                    const {data} = await getCurrent();
-                    console.log(data)
-                    setUser(data)
-                }catch (e) {
-                    setUser(null);
-                }
-                setLoading(false)
-            }
+            const {data} = await getCurrent();
+            console.log(data.data.name + " data !!!!!!!!!!!!!!!!!!!");
+
+            setCurrentUserName(data.data.name);
+            setCurrentUserEmail(data.data.email);
         };
         fetchUserData();
-    },[user]
-    )
-
+    }, []);
 
 
     const onSubmit = async (formData) => {
 
-        console.log(user.data.name);
-        /*const { to } = ""
-        formData = {
-            ...formData,
-            [to]: "adim@damin.com",
 
-        }*/
+        //console.log(data.data.name + " User");
+
+        //currentUser = user.data.name;
+        console.log(currentUserName + " User");
+       /*formData = {
+            "from": "user@mail.com",
+            "to": "admin@mail.com",
+            "massage": "asdasd",
+
+        };*/
         const { data } = await create(formData);
         if (!data.success) {
             setCloseBtnState(true);
@@ -70,33 +65,34 @@ function Contact(){
             <Header>
                 <h2>Kontakt oss</h2>
             </Header>
-
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label for="from">Name:</label>
+                <label htmlFor="name">Navn:</label>
+                <input id="name"
+                       placeholder="name"
+                       value={currentUserName}
+                       name="name"
+                       type="name"
+                       ref={register({
+                           required: true,
+                       })}/>
+                <label htmlFor="from">From:</label>
                 <input id="from"
                        placeholder="from"
                        name="from"
                        type="from"
+                       value={currentUserEmail}
                        ref={register({
                            required: true,
                        })}/>
-                <label htmlFor="to">Name:</label>
-                <input id="to"
-                       placeholder="to"
-                       name="to"
-                       type="to"
+                <label htmlFor="message">Message:</label>
+                <input id="message"
+                       placeholder="message"
+                       name="message"
+                       type="message"
                        ref={register({
                            required: true,
                        })}/>
-                <label htmlFor="data">Message:</label>
-                <input id="data"
-                       placeholder="data"
-                       name="data"
-                       type="data"
-                       ref={register({
-                           required: true,
-                       })}/>
-                <button type="submit">Click Me!</button>
+                <button type="submit">Send!</button>
             </form>
 
         </div>

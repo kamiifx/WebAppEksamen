@@ -9,11 +9,11 @@ const InquireSchema = new Schema(
             type: String,
             required: true,
         },
-        to: {
+        name: {
             type: String,
             required: true,
         },
-        data: {
+        message: {
             type: String,
             required: true,
         },
