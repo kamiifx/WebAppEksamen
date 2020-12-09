@@ -25,6 +25,9 @@ const articleValues = {
         'string.empty': 'Enter category',
         'any.required': 'Enter category!',
     }),
+    secret: Joi.boolean().required().messages({
+
+    }),
 
 };
 

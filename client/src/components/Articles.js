@@ -16,6 +16,8 @@ function Articles(){
         const fetchData = async () => {
             const {data,error} = await list();
             console.log(data)
+            console.log(isAdmin.toString())
+
 
             if (error){
                 setError(error)
@@ -28,7 +30,7 @@ function Articles(){
     return(
         <div>
             <Header>
-                <h2>Fagartikler</h2>
+                <h2>Fagartikler </h2>
             </Header>
 
             <Container>
