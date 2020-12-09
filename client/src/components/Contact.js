@@ -14,16 +14,39 @@ function Contact(){
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
     const history = useHistory();
-    const {setUser} = useAuthContext();
-
+    const {user, setUser} = useAuthContext();
+    const [loading, setLoading] = useState(false)
     const { register, errors, handleSubmit, formState } = useForm({
         mode: 'onBlur',
     });
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if (user === null){
+                setLoading(true);
+                try {
+                    const {data} = await getCurrent();
+                    console.log(data)
+                    setUser(data)
+                }catch (e) {
+                    setUser(null);
+                }
+                setLoading(false)
+            }
+        };
+        fetchUserData();
+    },[user])
+
 
 
     const onSubmit = async (formData) => {
 
-        console.log( + " test");
+        console.log(user.data.name);
+        /*const { to } = ""
+        formData = {
+            ...formData,
+            [to]: "adim@damin.com",
+
+        }*/
         const { data } = await create(formData);
         if (!data.success) {
             setCloseBtnState(true);
@@ -52,14 +75,7 @@ function Contact(){
                        ref={register({
                            required: true,
                        })}/>
-                <label for="to">To:</label>
-                <input id="to"
-                       placeholder="to"
-                       name="to"
-                       type="to"
-                       ref={register({
-                           required: true,
-                       })}/>
+
                 <label htmlFor="data">Message:</label>
                 <input id="data"
                        placeholder="data"
