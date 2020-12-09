@@ -26,7 +26,9 @@ function CreateArticle(){
             setError(data.message)
         }else {
             setSuccess(true);
-            history.push(`/articles/${data.data.id}`)
+            setTimeout(() => {
+                history.push(`/articles/${data.data.id}`);
+            }, 2000);
         }
     };
 
@@ -50,7 +52,7 @@ function CreateArticle(){
         <FormContainer onSubmit={handleSubmit(onSubmit)}>
             <FormInputContainer>
                 <p>Tittel</p>
-                <FormInput className="border" type="text" placeholder="Tittel" id="tittel" name="tittle" ref={register}/>
+                <FormInput className="border" type="text" placeholder="Tittel" id="tittle" name="tittle" ref={register}/>
                 <p>Ingress</p>
                 <FormTextArea className="border" type="text" placeholder="Ingress" id="ingress" name="ingress" ref={register}/>
                 <p>Kategori</p>
@@ -63,9 +65,9 @@ function CreateArticle(){
                     <AnimatePresence>
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} key={id}>
                             <p>Subtittel {index}</p>
-                            <FormInput className="border" type="text" placeholder="Subtitle" id="subtitle" name={`subtitle[${index}].value`} ref={register}/>
+                            <FormInput className="border" type="text" placeholder="Subtitle" id="subtitle" name={`subtitle[${index}]`} ref={register}/>
                             <p>Paragraf {index}</p>
-                            <FormTextArea className="border" type="text" placeholder="Paragraf" id="paragraf" name={`paragraph[${index}].value`} ref={register}/>
+                            <FormTextArea className="border" type="text" placeholder="Paragraf" id="paragraph" name={`paragraph[${index}]`} ref={register}/>
                             <FormButtonContainer>
                                 <BoxButtonSmall className="red" onClick={removeSection}>Remove</BoxButtonSmall>
                             </FormButtonContainer>

@@ -7,30 +7,30 @@ export const get = asyncCatch(async (req, res, next) => {
     if(!article){
         return next(new errorHandler(`can not find article with id ${req.params.id}`),404);
     }
-    res.status(201).json(article);
+    res.status(201).json({ success: true, data: article });
 });
 export const list = asyncCatch(async (req, res, next) => {
     const articles = await articleService.listAllArticles();
-    res.status(200).json(articles);
+    res.status(200).json({ success: true, data: articles });
 });
 
 
 export const create = asyncCatch(async (req, res, next) => {
     const article = await articleService.createArticle(req.body);
     req.body.user = req.user.id;
-    res.status(201).json(article);
+    res.status(201).json({ success: true, data: article });
 });
 export const update = asyncCatch(async (req, res, next) => {
     const article = await articleService.updateArticle(req.params.id, req.body);
     if(!article){
         return next(new errorHandler(`can not find article with id ${req.params.id}`),404);
     }
-    res.status(200).json(article);
+    res.status(200).json({ success: true, data: article });
 });
 export const remove = asyncCatch(async (req, res, next) => {
     const article = await articleService.removeArticle(req.params.id)
     if(!article){
         return next(new errorHandler(`can not find article with id ${req.params.id}`),404);
     }
-    res.status(204).json({});
+    res.status(204).json({ success: true, data: article });
 });
