@@ -1,11 +1,8 @@
 import React,{useState,useEffect} from 'react';
+import {Link} from 'react-router-dom'
 import {list} from '../utiils/articleService';
 import {Header,Container,ArticleBlock,ArticleIntro,BoxButton} from '../styled/Styled';
 import {useAuthContext} from "../contex/authProvider";
-
-
-
-
 
 function Articles(){
     const [articles, setArticles] = useState(null)
@@ -33,7 +30,9 @@ function Articles(){
 
             <Container>
                 {isLoggedIn&&isAdmin&&(
-                    <BoxButton className="blue">NY ARTIKKEL</BoxButton>
+                    <Link to="/article/create">
+                        <BoxButton className="blue">NY ARTIKKEL</BoxButton>
+                    </Link>
                 )}
                 <Container className="left">
                     <BoxButton>SØK</BoxButton>
@@ -43,14 +42,14 @@ function Articles(){
 
             {articles &&
                 articles.map((articles) => (
-                    <Container key={articles.id}>
+                    <Container className="min" key={articles.id}>
                         <ArticleBlock>
                             <a href={`/articles/${articles.id}`}>BILDE</a>
                             <ArticleIntro>
                                 <h2>{articles.tittle}</h2>
                                 <p>{articles.ingress}</p>
                             </ArticleIntro>
-                            <h4 className="kat">kategori</h4>
+                            <h4 className="kat">{articles.category}</h4>
                         </ArticleBlock>
                     </Container>
                 ))

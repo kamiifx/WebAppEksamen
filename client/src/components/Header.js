@@ -60,7 +60,7 @@ const Login = styled(motion.button)`
 `;
 
 function Header({modal,setModal}){
-    const {isLoggedIn,setUser} = useAuthContext();
+    const {isLoggedIn,isAdmin,setUser} = useAuthContext();
     const handleLogout = async() => {
         await logout();
         setUser(null);
@@ -70,6 +70,9 @@ function Header({modal,setModal}){
             <NavBar>
                 <h2>FG</h2>
                 <LeftDivNav>
+                    {isLoggedIn && isAdmin &&(
+                        <LinkNavbar href="/dashboard">Dashbord</LinkNavbar>
+                    )}
                     <LinkNavbar href="/">Hjem</LinkNavbar>
                     <LinkNavbar href="/offices">Kontorer</LinkNavbar>
                     <LinkNavbar href="/articles">Fagartikler</LinkNavbar>

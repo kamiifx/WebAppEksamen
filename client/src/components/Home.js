@@ -17,13 +17,6 @@ function Home({modal,setModal}){
                     <FlexItemBox whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} className="big"><a href="/articles">Se våre fagartikler om oppussing av bad</a></FlexItemBox>
                 </FlexBox>
             </Main>
-            <Footer>
-                <div>
-                    <p>Orgnr: 007 007 007</p>
-                    <p>lg@igror.no</p>
-                    <p>99 00 00 00</p>
-                </div>
-            </Footer>
         </div>
     )
 }

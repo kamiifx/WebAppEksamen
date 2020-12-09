@@ -58,6 +58,11 @@ export const Container = styled.div`
     margin-left: 20%;
     gap: 10px;
     }
+  &.min{
+  max-width: 35%;
+  align-items: center;
+  margin-left: 30%;
+  }
 `;
 
 export const LinkNavbar = styled.a`
@@ -108,7 +113,9 @@ export const ArticleBlock = styled.div`
 
   a{
     background-color: ${({ theme }) => theme.colors.header};
-    width: 13rem;
+    justify-content: center;
+    align-items: center;
+    width: 60rem;
     height: 10rem;
     margin-right: 1rem;
   }
@@ -187,8 +194,11 @@ export const Footer = styled.footer`
   z-index: 1;
   position: sticky;
   height: 65px;
+  bottom: 0;
   width:100%;
   background-color: #fff;
+  box-shadow:${({ theme }) => theme.shadows.sm} ;
+  margin-top: 30px;
   div{
   display: flex;
   flex-direction: row;

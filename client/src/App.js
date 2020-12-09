@@ -9,6 +9,8 @@ import ArticlePage from "./components/ArticlePage";
 import AuthProvider from "./contex/authProvider";
 import CreateArticle from "./components/CreateArticle";
 import Offices from "./components/Offices";
+import FooterBottom from "./components/FooterBottom";
+import AdminDashboard from "./components/AdminDashboard";
     function App() {
     const [modal,ToggleModal] = useState(false);
   return (
@@ -24,6 +26,8 @@ import Offices from "./components/Offices";
                           <Route exact path="/offices" component={Offices}/>
                           <Route exact path="/articles/:id" component={ArticlePage}/>
                           <Route exact path="/article/create" component={CreateArticle}/>
+                          <Route exact path="/dashboard" component={AdminDashboard}/>
+                          <FooterBottom/>
                       </AuthProvider>
                   </BrowserRouter>
               </div>

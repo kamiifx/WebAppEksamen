@@ -15,10 +15,12 @@ const theme = {
         acceptHover: '#90CDF4',
         grayText:'#718096',
         grayed:'#4A5568',
+        grayer:'#2D3748',
+        graygrayer:'#1A202C',
         framerBlue:'#0077FF'
     },
     shadows:{
-        sm:'0px 0px 25px 0px rgba(0,0,0,0.25);',
+        sm:'0px 0px 25px 0px rgba(0,0,0,0.15);',
         md:'0px 0px 25px 0px rgba(0,0,0,0.35);',
         lg:'0px 0px 25px 0px rgba(0,0,0,0.45);',
         hg:'0px 0px 25px 0px rgba(0,0,0,0.55);',
