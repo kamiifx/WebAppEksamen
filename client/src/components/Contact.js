@@ -1,7 +1,7 @@
 import React,{ useState,useEffect } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import {Header,Container,ArticleBlock,ArticleIntro,BoxButton} from '../styled/Styled';
+import {Header,Container,ArticleBlock,ArticleIntro,BoxButton, FormInput, FormInputContainer, FormButtonContainer, FormTextArea } from '../styled/Styled';
 import { create } from '../utiils/contactService.js';
 import { useForm } from 'react-hook-form';
 import {useAuthContext} from "../contex/authProvider.js";
@@ -52,39 +52,47 @@ function Contact(){
 
     return(
         <div>
+
             <Header>
                 <h2>Kontakt oss</h2>
             </Header>
+                <Container>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="name">Navn:</label>
-                <input id="name"
+                <FormInputContainer>
+                <p >Navn:</p>
+                <FormInput id="name"
                        placeholder="name"
                        value={currentUserName}
                        name="name"
                        type="name"
-                       ref={register({
+                           className="border"
+                           ref={register({
                            required: true,
                        })}/>
-                <label htmlFor="from">From:</label>
-                <input id="from"
+                <p >From:</p>
+                <FormInput id="from"
                        placeholder="from"
                        name="from"
                        type="from"
-                       value={currentUserEmail}
+                           className="border"
+                           value={currentUserEmail}
                        ref={register({
                            required: true,
                        })}/>
-                <label htmlFor="message">Message:</label>
-                <input id="message"
+                <p >Message:</p>
+                <FormTextArea id="message"
                        placeholder="message"
                        name="message"
+                           className="border"
                        type="message"
                        ref={register({
                            required: true,
                        })}/>
-                <button type="submit">Send!</button>
-            </form>
+                </FormInputContainer>
+                <FormButtonContainer className="center" ><BoxButton className="green" type="submit">Send!</BoxButton></FormButtonContainer>
 
+            </form>
+            </Container>
         </div>
     )
 }

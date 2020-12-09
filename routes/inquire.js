@@ -8,4 +8,6 @@ import {inquireSchema} from "../schemas/index.js";
 const router = express.Router();
 
 router.post('/', authentication, validateFields(inquireSchema.createInquireSchema), inquireController.create);
+router.get(`/:id`, inquireController.get);
+router.get('/', inquireController.list);
 export default router;
