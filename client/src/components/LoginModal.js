@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import {motion} from "framer-motion";
 import {useForm} from "react-hook-form";
-import {login} from "../utiils/authService";
+import {login,create} from "../utiils/authService";
 import {useAuthContext} from "../contex/authProvider";
-import {BoxButton} from "../styled/Styled";
-import {useHistory} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {BoxButton,FormButtonContainer,FormInput,FormInputContainer} from "../styled/Styled";
+
 
 const ModalBody = styled(motion.div)`
 position: absolute;
@@ -13,13 +15,13 @@ position: absolute;
   width: 100%;
   height: 100%;
 `
-const Modal = styled.div`
+const Modal = styled(motion.div)`
   z-index: 20;
   position: absolute;
   top: 50%;
   left: 50%;
   width: 30rem;
-  height: 30rem;
+  height: 32rem;
   background-color: ${({ theme }) => theme.colors.default};
   margin-right: -50%;
   transform: translate(-50%, -50%); 
@@ -70,43 +72,17 @@ const ModalHeader = styled.div`
   }
   }
 `;
-const FormInputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 13%;
-  justify-content: center;
-  margin-bottom: 40px;
-  font-family: 'Roboto',sans-serif;
-  p{
-  font-size: 20px;
-  color:${({ theme }) => theme.colors.grayed} ;
-  }
-`;
-const FormInput = styled.input`
-  width: 22rem;
-  height: 3rem;
-  border-radius: 7px;
-  border:none;
-  font-family: 'Roboto',sans-serif;
-  font-size: 18px;
-  color:${({ theme }) => theme.colors.grayText} ;
-`
-const FormButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 25px;
-`
 
 
 
 
 function LoginModal({modal,setModalOn}){
+
     const [success, setSuccess] = useState(false);
     const [error,setError] = useState(null);
-    const {register,errors,handleSubmit,formState} = useForm({mode:'onBlur'})
+    const [reg,setReg] = useState(false);
+    const {register,errors,handleSubmit} = useForm({mode:'onBlur'})
     const {setUser} = useAuthContext();
-    const history = useHistory();
 
 
 
@@ -114,26 +90,44 @@ function LoginModal({modal,setModalOn}){
         open:{scale:[0,1,1.1,1]},
         closed:{opacity:0}
     }
+    const variants2 = {
+        true:{height:"37rem"},
+        false:{height: "30rem"}
+    }
 
 
     const onSubmit = async (userdata) => {
         console.log("submit")
-        const {data} = await login(userdata);
-        if (!data.success){
-            console.log(data)
-            setError(data.message);
+        if (reg === false){
+            const {data} = await login(userdata);
+            if (!data.success){
+                setError(data.message[0].message);
+                toast.error(data.message[0].message);
+                toast.error(data.message);
+
+            }else {
+                const user = data?.user;
+                const expire = JSON.parse(window.atob(data.token.split('.')[1])).exp;
+                setUser({...user,expire});
+                setSuccess(true);
+                setModalOn(false);
+            }
         }else {
-            const user = data?.user;
-            const expire = JSON.parse(window.atob(data.token.split('.')[1])).exp;
-            setUser({...user,expire});
-            setSuccess(true);
-            history.push('/');
+            const data = await create(userdata);
+            if(!data.success){
+                toast.error(data.message[0].message);
+                toast.error(data.message);
+            }else {
+                setModalOn(false);
+                setSuccess(true);
+            }
         }
     };
 
     return(
             <ModalBody animate={modal ? "open" : "closed"} variants={variants} transition={{duration:0.45}}  style={{display:modal?"block":"none"}}>
-                <Modal>
+                <ToastContainer/>
+                <Modal animate={reg? "true":"false"} variants={variants2}>
                     <ModalHeader>
                         <img src="https://img.icons8.com/pastel-glyph/2x/plumbing.png" alt=""/>
                         <div>
@@ -148,14 +142,21 @@ function LoginModal({modal,setModalOn}){
                             <FormInput type="text" placeholder="Email" id="email" name="email" ref={register({required:true,})}/>
                             <p>Password</p>
                             <FormInput type="text" placeholder="Password" id="password" name="password" ref={register({required:true,})}/>
+                            {reg &&(
+                                <div>
+                                    <p>Navn</p>
+                                    <FormInput type="text" placeholder="Navn" id="name" name="name" ref={register({required:true,})}/>
+                                </div>
+                            )}
                         </FormInputContainer>
                         <FormButtonContainer>
-                            <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} type="submit" className="green">Login</BoxButton>
-                            <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} className="blue">Register</BoxButton>
+                            <BoxButton whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} type="submit" className="green">{reg? "Register": "Login"}</BoxButton>
+                            <BoxButton style={{display:reg?"none":"block"}} whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }} onClick={()=> setReg(!reg)} className="blue">Register</BoxButton>
                         </FormButtonContainer>
                     </form>
                 </Modal>
             </ModalBody>
+
     )
 }
 

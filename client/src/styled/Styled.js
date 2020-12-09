@@ -24,11 +24,24 @@ export const BoxButton = styled(motion.button)`
     background-color:${({ theme }) => theme.colors.greenHover};
     transition: 0.5s ease-in-out;
   }
+  &.red{
+  background-color:${({ theme }) => theme.colors.redDeny};
+    &:hover{
+    background-color:${({ theme }) => theme.colors.alert};
+    transition: 0.5s ease-in-out;
+    }
   }
   &:hover{
   cursor: pointer;
   }
 `;
+
+export const BoxButtonSmall = styled(BoxButton)`
+  margin-top: 20px;
+  width: 5rem;
+  height: 2.5rem;
+  font-size: 13px;
+`
 
 export const Main = styled.main`
   background-color: ${({ theme }) => theme.colors.default};
@@ -182,4 +195,68 @@ export const Footer = styled.footer`
   p{
   font-family: 'Roboto',sans-serif;
   }
+`
+export const FormInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 13%;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-family: 'Roboto',sans-serif;
+  p{
+  font-size: 20px;
+  color:${({ theme }) => theme.colors.grayed} ;
+  }
+`;
+export const FormInput = styled(motion.input)`
+  width: 22rem;
+  height: 3rem;
+  border-radius: 7px;
+  border:none;
+  font-family: 'Roboto',sans-serif;
+  font-size: 18px;
+  color:${({ theme }) => theme.colors.grayText};
+  &.border{
+  border: 1px solid ${({ theme }) => theme.colors.grayText};
+  }
+`;
+export const FormTextArea = styled.textarea`
+  text-overflow: inherit;
+  width: 55rem;
+   border-radius: 7px;
+  border:none;
+  font-family: 'Roboto',sans-serif;
+  font-size: 18px;
+  color:${({ theme }) => theme.colors.grayText};
+  border: 1px solid ${({ theme }) => theme.colors.grayText};
+`
+
+
+export const FormButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+`;
+
+export const FormContainer = styled.form`
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+`;
+
+export const MotionButton = styled.button`
+  display: flex;
+  width: 2rem;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  border:none;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
 `
