@@ -16,6 +16,11 @@ function Contact(){
     const history = useHistory();
     const {user, setUser} = useAuthContext();
     const [loading, setLoading] = useState(false)
+    const [formData, setFormData] = useState({
+        from: '',
+        to: 'asd',
+        data: '',
+    });
     const { register, errors, handleSubmit, formState } = useForm({
         mode: 'onBlur',
     });
@@ -34,7 +39,8 @@ function Contact(){
             }
         };
         fetchUserData();
-    },[user])
+    },[user]
+    )
 
 
 
@@ -70,12 +76,18 @@ function Contact(){
                 <input id="from"
                        placeholder="from"
                        name="from"
-
                        type="from"
                        ref={register({
                            required: true,
                        })}/>
-
+                <label htmlFor="to">Name:</label>
+                <input id="to"
+                       placeholder="to"
+                       name="to"
+                       type="to"
+                       ref={register({
+                           required: true,
+                       })}/>
                 <label htmlFor="data">Message:</label>
                 <input id="data"
                        placeholder="data"
