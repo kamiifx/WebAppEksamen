@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import Image from "./image";
 const { Schema } = mongoose;
 const ArticleSchema = new Schema(
     {
@@ -29,7 +28,11 @@ const ArticleSchema = new Schema(
             type: Boolean,
             required: false,
         },
-        Image
+        imageId:{
+            type: String,
+            required: false,
+        }
+
     },
     { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
