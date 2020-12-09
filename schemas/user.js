@@ -23,7 +23,7 @@ const signUpValues = {
         'any.required': 'Enter full name!',
 
     }),
-    password: Joi.string().regex(/'^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{3,}$correct pattern, must only at least contain 1 number and minimun 3 characters in the'/, ).required().messages({
+    password: Joi.string().regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{3,}$/, 'correct pattern, must only at least contain 1 number and minimum 3 characters in the' ).required().messages({
         'string.empty': 'Enter password',
         'any.required': 'Enter password',
         'string.min': 'Minimum 6 character',
@@ -34,7 +34,6 @@ const signUpValues = {
 
 export const signUpSchema = Joi.object()
     .keys({
-        name: Joi.string(),
         ...userValues,...signUpValues,
     })
     .options({ abortEarly: false });

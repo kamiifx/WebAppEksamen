@@ -11,11 +11,11 @@ const AuthProvider = ({children}) => {
         const fetchUserData = async () => {
             if (user === null){
                 setLoading(true);
-                try {
-                    const {data} = await getCurrent();
-                    console.log(data)
-                    setUser(data)
-                }catch (e) {
+                const { data } = await getCurrent();
+                if (data?.success) {
+                    const currentUser = data.data;
+                    setUser(currentUser);
+                } else {
                     setUser(null);
                 }
                 setLoading(false)

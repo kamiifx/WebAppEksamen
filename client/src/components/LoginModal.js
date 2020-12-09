@@ -114,7 +114,7 @@ function LoginModal({modal,setModalOn}){
             }
         }else {
             const data = await create(userdata);
-            if(!data.success){
+            if(!data.success && data.message != null){
                 toast.error(data.message[0].message);
                 toast.error(data.message);
             }else {
