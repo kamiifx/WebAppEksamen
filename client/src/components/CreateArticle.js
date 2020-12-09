@@ -11,14 +11,16 @@ import {
 
 function CreateArticle(){
     const addHeight = (e) =>{
-        setHeight(heightI + 100)
+        setParHeight(parHeight + 100)
         e.preventDefault()
     }
     const removeHeiht = (e) => {
-        setHeight(heightI - 100)
+        if (parHeight > 100){
+            setParHeight(parHeight - 100)
+        }
         e.preventDefault()
     }
-    const [heightI,setHeight] = useState(50);
+    const [parHeight,setParHeight] = useState(50);
     return(
         <FormContainer action="">
             <FormInputContainer>
@@ -32,7 +34,7 @@ function CreateArticle(){
                     <MotionButton onClick={removeHeiht}>&#10134;</MotionButton>
                 </FormButtonContainer>
 
-                <FormInputBig animate={{"height":heightI}} className="border" type="text" placeholder="Paragraf" id="paragraf" name="paragraph"/>
+                <FormInputBig animate={{"height":parHeight}} className="border" type="text" placeholder="Paragraf" id="paragraf" name="paragraph"/>
             </FormInputContainer>
         </FormContainer>
     )
