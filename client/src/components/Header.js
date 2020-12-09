@@ -73,7 +73,7 @@ function Header({modal,setModal}){
                     <LinkNavbar href="/">Hjem</LinkNavbar>
                     <LinkNavbar href="/">Kontorer</LinkNavbar>
                     <LinkNavbar href="/articles">Fagartikler</LinkNavbar>
-                    <LinkNavbar href="/">Kontakt</LinkNavbar>
+                    <LinkNavbar href="/contact">Kontakt</LinkNavbar>
                     {!isLoggedIn &&(
                         <Login whileHover={{ scale: 1.1}} whileTap={{ scale: 1 }}   onClick={() => setModal(true)}>Login</Login>
                     )}
