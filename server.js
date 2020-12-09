@@ -17,7 +17,7 @@ const app = express();
 env.config();
 app.use(express.json());
 
-app.use(express.static(`./public`));
+app.use(express.static(`${__dirname}/public`));
 
 app.use(morgan('dev'));
 app.use(cookieParser());

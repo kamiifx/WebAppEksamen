@@ -5,20 +5,25 @@
   "repository": "git@github.com:kamiifx/WebAppEksamen.git",
   "author": "Kamii Akbari <kamiiuedev@gmail.com>",
   "license": "MIT",
-  "type": "module",
   "scripts": {
-    "server": "nodemon server.js",
+    "server": "nodemon --exec babel-node server.js",
     "client": "cd client && yarn start",
     "dev": "concurrently \"yarn run server\" \"yarn run client\""
   },
   "dependencies": {
+    "add": "^2.0.6",
     "argon2": "^0.27.0",
     "body-parser": "^1.19.0",
     "concurrently": "^5.3.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "csurf": "^1.11.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.0.1",
+    "express-rate-limit": "^5.2.3",
+    "helmet": "^4.2.0",
+    "hpp": "^0.2.3",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.0",
@@ -26,6 +31,12 @@
     "multer": "^1.4.2",
     "nodemailer": "^6.4.16",
     "nodemon": "^2.0.6",
-    "validator": "^13.5.1"
+    "validator": "^13.5.1",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.1"
   }
 }

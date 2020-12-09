@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-//import User from "./user";
+import Image from "./image";
 const { Schema } = mongoose;
 const ArticleSchema = new Schema(
     {
@@ -28,7 +28,8 @@ const ArticleSchema = new Schema(
         secret:{
             type: Boolean,
             required: false,
-        }
+        },
+        Image
     },
     { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
