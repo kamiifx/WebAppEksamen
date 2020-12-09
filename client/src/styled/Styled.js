@@ -24,11 +24,24 @@ export const BoxButton = styled(motion.button)`
     background-color:${({ theme }) => theme.colors.greenHover};
     transition: 0.5s ease-in-out;
   }
+  &.red{
+  background-color:${({ theme }) => theme.colors.redDeny};
+    &:hover{
+    background-color:${({ theme }) => theme.colors.alert};
+    transition: 0.5s ease-in-out;
+    }
   }
   &:hover{
   cursor: pointer;
   }
 `;
+
+export const BoxButtonSmall = styled(BoxButton)`
+  margin-top: 20px;
+  width: 5rem;
+  height: 2.5rem;
+  font-size: 13px;
+`
 
 export const Main = styled.main`
   background-color: ${({ theme }) => theme.colors.default};
@@ -207,8 +220,15 @@ export const FormInput = styled(motion.input)`
   border: 1px solid ${({ theme }) => theme.colors.grayText};
   }
 `;
-export const FormInputBig = styled(FormInput)`
+export const FormTextArea = styled.textarea`
+  text-overflow: inherit;
   width: 55rem;
+   border-radius: 7px;
+  border:none;
+  font-family: 'Roboto',sans-serif;
+  font-size: 18px;
+  color:${({ theme }) => theme.colors.grayText};
+  border: 1px solid ${({ theme }) => theme.colors.grayText};
 `
 
 
@@ -220,6 +240,7 @@ export const FormButtonContainer = styled.div`
 `;
 
 export const FormContainer = styled.form`
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
 `;
