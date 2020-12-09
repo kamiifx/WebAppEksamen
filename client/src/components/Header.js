@@ -71,7 +71,7 @@ function Header({modal,setModal}){
                 <h2>FG</h2>
                 <LeftDivNav>
                     <LinkNavbar href="/">Hjem</LinkNavbar>
-                    <LinkNavbar href="/">Kontorer</LinkNavbar>
+                    <LinkNavbar href="/contact">Kontorer</LinkNavbar>
                     <LinkNavbar href="/articles">Fagartikler</LinkNavbar>
                     <LinkNavbar href="/contact">Kontakt</LinkNavbar>
                     {!isLoggedIn &&(

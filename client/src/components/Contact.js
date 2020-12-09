@@ -18,7 +18,7 @@ function Contact(){
     const [currentUserName, setCurrentUserName] = useState(null);
     const [currentUserEmail, setCurrentUserEmail] = useState(null);
     const [loading, setLoading] = useState(false)
-    //const [fromData, setFormData] = useState(null);
+
     const { register, errors, handleSubmit, formState } = useForm({
         mode: 'onBlur',
     });
@@ -38,16 +38,6 @@ function Contact(){
     const onSubmit = async (formData) => {
 
 
-        //console.log(data.data.name + " User");
-
-        //currentUser = user.data.name;
-        console.log(currentUserName + " User");
-       /*formData = {
-            "from": "user@mail.com",
-            "to": "admin@mail.com",
-            "massage": "asdasd",
-
-        };*/
         const { data } = await create(formData);
         if (!data.success) {
             setCloseBtnState(true);
