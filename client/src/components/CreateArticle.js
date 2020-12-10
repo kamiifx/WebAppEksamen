@@ -19,6 +19,8 @@ function CreateArticle(){
     const [success, setSuccess] = useState(false);
     const [error,setError] = useState(null);
     const history = useHistory();
+    const [imageId, setImageIdArticle] = useState(null);
+
 
     const onSubmit = async (userdata) => {
         const {data} = await create(userdata)
@@ -38,7 +40,7 @@ function CreateArticle(){
     const {register,control,handleSubmit} = useForm()
     const {fields,append,remove} = useFieldArray({
         control,
-        name:'subtitle',
+        name:'Subtitle',
     })
     const addSection = (e) => {
         append({})
@@ -48,6 +50,7 @@ function CreateArticle(){
         remove({})
         e.preventDefault();
     }
+
 
     return(
         <div>
@@ -61,13 +64,14 @@ function CreateArticle(){
                     <FormInput className="border" type="text" placeholder="kategori" id="category" name="category" ref={register}/>
                     <FormButtonContainer>
                         <BoxButtonSmall className="green" onClick={addSection}>Add section</BoxButtonSmall>
-                        <input type="checkbox" name="secret"/>
+                        <input type="checkbox" name="secret" ref={register}/>
                     </FormButtonContainer>
                     {fields.map(({id}, index) =>(
                         <AnimatePresence>
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} key={id}>
                                 <p>Subtittel {index}</p>
                                 <FormInput className="border" type="text" placeholder="Subtitle" id="subtitle" name={`subtitle[${index}]`} ref={register}/>
+
                                 <p>Paragraf {index}</p>
                                 <FormTextArea className="border" type="text" placeholder="Paragraf" id="paragraph" name={`paragraph[${index}]`} ref={register}/>
                                 <FormButtonContainer>
@@ -76,13 +80,17 @@ function CreateArticle(){
                             </motion.div>
                         </AnimatePresence>
                     ))}
+                    <p>ImageID</p>
+                    <FormInput className="border" type="text" placeholder="imageId" id="imageId" name="imageId" readonly value={imageId} ref={register}/>
                     {fields.length > 0 &&(
                         <BoxButtonMarg type="submit" className="blue">Publish</BoxButtonMarg>
                     )}
                 </FormInputContainer>
 
             </FormContainer>
-            < Image/>
+            < Image imageId={imageId} setImageIdArticle={setImageIdArticle}/>
+            <p></p>
+
         </div>
 
 

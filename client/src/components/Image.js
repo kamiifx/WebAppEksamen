@@ -14,12 +14,13 @@ import {
     FormContainer
 } from '../styled/Styled';
 
-const ImageUpload = () => {
+const ImageUpload = ({imageId, setImageIdArticle}) => {
     const [file, setFile] = useState();
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
     const [id, setImageId] = useState(null);
     const [src, setSrc] = useState(null);
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -28,8 +29,10 @@ const ImageUpload = () => {
             setError(data.message);
         } else {
             setImageId(data?.data?._id);
+            setImageIdArticle(data?.data?._id)
             setSuccess(true);
             setError(null);
+
         }
     };
 
