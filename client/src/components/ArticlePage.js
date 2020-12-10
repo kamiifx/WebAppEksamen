@@ -123,7 +123,7 @@ function ArticlePage(){
                 ))
                 }
                 <FormButtonContainer>
-                    <BoxButton onClick={slettArtikkel} className="red">Slett</BoxButton>
+                    <BoxButton className="red">Slett</BoxButton>
                     <BoxButton className="blue">Rediger</BoxButton>
                 </FormButtonContainer>
             </Article>
