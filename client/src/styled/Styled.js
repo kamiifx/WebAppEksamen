@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {motion} from "framer-motion";
 
-
 export const BoxButton = styled(motion.button)`
   background-color:${({ theme }) => theme.colors.header};
   border: none;
@@ -46,11 +45,11 @@ export const BoxButtonSmall = styled(BoxButton)`
 
 export const BoxButtonMarg = styled(BoxButton)`
   margin-top: 25px;
-`
+`;
 
 export const Main = styled.main`
   background-color: ${({ theme }) => theme.colors.default};
-`
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -65,6 +64,7 @@ export const Container = styled.div`
   margin-left: 30%;
   }
 `;
+
 export const ContainerFlex = styled(Container)`
   font-family: 'Roboto',sans-serif;
   flex-direction: column;
@@ -76,7 +76,7 @@ export const ContainerFlex = styled(Container)`
   border-radius: 5px;
   background-color:${({ theme }) => theme.colors.header} ;
   margin-left: 40px;
-`
+`;
 
 export const LinkNavbar = styled.a`
   color: black;
