@@ -2,10 +2,11 @@ import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 import {useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import {get} from '../utiils/articleService'
 import {Header,FormButtonContainer,BoxButton,ArticleHeaderCont,ArticleHeader,Article,ArticleMain} from "../styled/Styled";
+import {get ,slett} from '../utiils/articleService'
 import {download} from "../utiils/imageService";
 import * as url from "url";
+import {useAuthContext} from "../contex/authProvider";
 
 
 function ArticlePage(){
@@ -13,6 +14,8 @@ function ArticlePage(){
     const { id } = useParams();
     const [imageId, setImageId] = useState(null);
     const [src, setSrc] = useState(null);
+    const history = useHistory();
+    const { isLoggedIn, isAdmin } = useAuthContext();
 
 
     useEffect(async () => {
@@ -25,6 +28,19 @@ function ArticlePage(){
 
     },[id])
 
+    const editBtn =  () => {
+        console.log("edit HAHAH")
+        setTimeout(() => {
+            history.push(`/articleedit/${id}`);
+        }, 10);
+    }
+    const deleteArticle = async () => {
+        console.log("slett it haha")
+        await slett(id);
+        setTimeout(() => {
+            history.push(`/articles`);
+        }, 2000);
+    }
     function arrayBufferToBase64(buffer) {
         let binary = '';
         const bytes = [].slice.call(new Uint8Array(buffer));
@@ -72,22 +88,23 @@ function ArticlePage(){
                     </ArticleHeaderCont>
                 )}
                 {article &&
-                article.subtitle.map((sub) => (
-                    <ArticleMain key={sub.id}>
-                        <h3>{sub}</h3>
+                article.subtitle.map((articles) => (
+                    <ArticleMain key={articles.id}>
+                        <h3>{articles}</h3>
                         {article &&
-                        article.paragraph.map((par) => (
-                            <div key={par.id}>
-                                <p>{par}</p>
+                        article.paragraph.map((articles) => (
+                            <div key={articles.id}>
+                                <p>{articles}</p>
                             </div>
-                        ))}
                     </ArticleMain>
                 ))
                 }
+                {isLoggedIn&&isAdmin&&(
                 <FormButtonContainer>
-                    <BoxButton className="red">Slett</BoxButton>
-                    <BoxButton className="blue">Rediger</BoxButton>
+                    <BoxButton className="red" onClick={deleteArticle}>Slett  </BoxButton>
+                    <BoxButton className="blue" onClick={editBtn} >Rediger </BoxButton>
                 </FormButtonContainer>
+                )}
             </Article>
         </div>
     )

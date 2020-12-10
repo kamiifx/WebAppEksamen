@@ -35,9 +35,9 @@ export const slett = async (id) => {
 }
 
 
-export const edit = async (id) => {
+export const edit = async (id, data) => {
     try{
-        return await http.put(`${API}/${id}`)
+        return await http.put(`${API}/${id}`,data)
     } catch (err){
         return err.response;
     }

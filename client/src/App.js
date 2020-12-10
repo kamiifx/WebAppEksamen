@@ -12,6 +12,7 @@ import Image from "./components/Image.js";
 import Offices from "./components/Offices";
 import FooterBottom from "./components/FooterBottom";
 import AdminDashboard from "./components/AdminDashboard";
+import EditArticle from "./components/EditArticle";
 import OfficeDetail from "./components/OfficeDetail";
     function App() {
     const [modal,ToggleModal] = useState(false);
@@ -24,6 +25,7 @@ import OfficeDetail from "./components/OfficeDetail";
                           <Header modal={modal} setModal={ToggleModal}/>
                           <Route exact path="/" component={() => <Home modal={modal} setModal={ToggleModal}/>}/>
                           <Route exact path="/articles" component={Articles}/>
+                          <Route exact path="/articleedit/:id" component={EditArticle}/>
                           <Route exact path="/images" component={Image}/>
                           <Route exact path="/contact" component={Contact}/>
                           <Route exact path="/offices" component={Offices}/>
