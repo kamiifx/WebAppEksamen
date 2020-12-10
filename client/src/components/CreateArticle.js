@@ -62,9 +62,10 @@ function CreateArticle(){
                     <FormTextArea className="border" type="text" placeholder="Ingress" id="ingress" name="ingress" ref={register}/>
                     <p>Kategori</p>
                     <FormInput className="border" type="text" placeholder="kategori" id="category" name="category" ref={register}/>
+                    <p>Hemmelig artikkel</p>
+                    <input type="checkbox" name="secret" ref={register}/>
                     <FormButtonContainer>
                         <BoxButtonSmall className="green" onClick={addSection}>Add section</BoxButtonSmall>
-                        <input type="checkbox" name="secret" ref={register}/>
                     </FormButtonContainer>
                     {fields.map(({id}, index) =>(
                         <AnimatePresence>
