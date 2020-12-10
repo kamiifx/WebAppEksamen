@@ -56,13 +56,17 @@ function ArticlePage(){
     useEffect(async () => {
         if(id){
             const {data} = await get(id)
-            console.log(data.imageId)
+
             setArticle(data)
-            setImageId(data.imageId)
-            //downloadImage()
+            setImageId(data.imageId);
+
+
 
         }
+
+
     },[id])
+
     function arrayBufferToBase64(buffer) {
         let binary = '';
         const bytes = [].slice.call(new Uint8Array(buffer));
@@ -83,7 +87,12 @@ function ArticlePage(){
         setSrc(img);
 
     };
-    downloadImage();
+    if(imageId != null) {
+            downloadImage();
+        setImageId(null);
+    }
+
+
 
     return(
         <div>

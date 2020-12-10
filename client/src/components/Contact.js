@@ -17,7 +17,7 @@ function Contact(){
     const {user, setUser} = useAuthContext();
     const [currentUserName, setCurrentUserName] = useState(null);
     const [currentUserEmail, setCurrentUserEmail] = useState(null);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
     //const [fromData, setFormData] = useState(null);
     const { register, errors, handleSubmit, formState } = useForm({
         mode: 'onBlur',
