@@ -64,6 +64,18 @@ export const Container = styled.div`
   margin-left: 30%;
   }
 `;
+export const ContainerFlex = styled(Container)`
+  font-family: 'Roboto',sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40rem;
+  height: auto;
+  margin-top: 30px;
+  border-radius: 5px;
+  background-color:${({ theme }) => theme.colors.header} ;
+  margin-left: 40px;
+`
 
 export const LinkNavbar = styled.a`
   color: black;
@@ -192,7 +204,7 @@ export const FlexItemBox = styled(motion.div)`
 
 export const Footer = styled.footer`
   z-index: 1;
-  position: sticky;
+  position: fixed;
   height: 65px;
   bottom: 0;
   width:100%;

@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import {limits} from "argon2";
 
 const inquireValues = {
     from: Joi.string().email().required().messages({
@@ -12,11 +13,17 @@ const inquireValues = {
         'string.min': 'Minimum 2 character',
 
     }),
+    subject: Joi.string().min(1).required().messages({
+        'string.empty': 'Enter subject',
+        'any.required': 'Enter subject!',
+        'string.min': 'Minimum 1 character',
+    }),
     message: Joi.string().min(1).required().messages({
         'string.empty': 'Enter massage',
         'any.required': 'Enter massage!',
         'string.min': 'Minimum 1 character',
     }),
+
 
 
 };
