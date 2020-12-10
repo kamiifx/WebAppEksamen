@@ -67,7 +67,7 @@ export const Container = styled.div`
 export const SmallContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 40%;
+  width: 60%;
   margin-left: 10rem;
 `
 
