@@ -59,6 +59,8 @@ function ArticlePage(){
             setArticle(data)
             setImageId(data.imageId);
         }
+
+
     },[id])
 
     function arrayBufferToBase64(buffer) {
