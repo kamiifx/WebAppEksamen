@@ -12,8 +12,8 @@ function Home({modal,setModal}){
                     <h2>Velkommer til FG Rørleggerservice AS</h2>
                 </Header>
                 <FlexBox>
-                    <FlexItemBox className="office" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}><a href="/">Kontorer</a></FlexItemBox>
-                    <FlexItemBox whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} className="med"><a href="/">Kontakt</a></FlexItemBox>
+                    <FlexItemBox className="office" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}><a href="/offices">Kontorer</a></FlexItemBox>
+                    <FlexItemBox whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} className="med"><a href="/contact">Kontakt</a></FlexItemBox>
                     <FlexItemBox whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} className="big"><a href="/articles">Se våre fagartikler om oppussing av bad</a></FlexItemBox>
                 </FlexBox>
             </Main>

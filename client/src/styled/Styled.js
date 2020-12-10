@@ -164,11 +164,19 @@ export const FlexItemBox = styled(motion.div)`
   background-color:${({ theme }) => theme.colors.header};
   margin-left: 40px;
   margin-bottom: 10px;
+  @media ${({ theme }) => theme.breakpoints.smallScreen}{
+      width:24rem;
+      height:24rem;
+    };
   &.med{
   width: 84.7rem;
     background-image: url("https://images.squarespace-cdn.com/content/v1/59a47dc6a803bbb4523bbd19/1509570491705-EC4ZDUB9PVY0Z8Z6EOUC/ke17ZwdGBToddI8pDm48kFmfxoboNKufWj-55Bgmc-J7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iXS6XmVv7bUJ418E8Yoc1hjuviiiZmrL38w1ymUdqq4JaGeFUxjM-HeS7Oc-SSFcg/AdobeStock_112315636.jpeg?format=2500w");
     background-size: cover;
     filter: grayscale(80%);
+      @media ${({ theme }) => theme.breakpoints.smallScreen}{
+      width:60rem;
+      height:24rem;
+    };
     &:hover{
     transition: 0.5s ease-in-out;
     filter: grayscale(0%);
@@ -177,12 +185,16 @@ export const FlexItemBox = styled(motion.div)`
   }
   &.big{
   margin-top: 35px;
-  width: 117rem;
+  width: 117.7rem;
   height: 35rem;
   margin-bottom: 6rem;
   background-image: url("https://www.fsbna.com/res/Media/fsbna.com/Media/Keyvisuals/FSB-Bathroom-Title-01/1/FSB-Bathroom-Title-01.jpg");
   background-size: cover;
   filter: grayscale(80%);
+  @media ${({ theme }) => theme.breakpoints.smallScreen}{
+      width:86.7rem;
+      height:32rem;
+    };
   &:hover{
   transition: 0.5s ease-in-out;
   filter: grayscale(0%);

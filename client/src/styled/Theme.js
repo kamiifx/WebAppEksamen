@@ -28,6 +28,7 @@ const theme = {
     breakpoints:{
         mobileS:'(max-width: 480px)',
         mobileM:'(max-width: 573px)',
+        smallScreen:'(max-width: 1920px)'
     }
 
 }
