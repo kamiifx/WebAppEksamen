@@ -3,48 +3,10 @@ import styled from 'styled-components';
 import {useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import {get} from '../utiils/articleService'
-import {Header,FormButtonContainer,BoxButton} from "../styled/Styled";
+import {Header,FormButtonContainer,BoxButton,ArticleHeaderCont,ArticleHeader,Article,ArticleMain} from "../styled/Styled";
 import {download} from "../utiils/imageService";
 import * as url from "url";
 
-const Article = styled.article`
-  display: flex;
-  justify-content: center;
-  flex-direction:column;
-  width: 26%;
-  margin-left: 36%;
-  font-family: 'Roboto',sans-serif;
-`;
-
-const ArticleHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 55%;
-  margin-bottom: -10px;
-  p{
-  font-size: 13px;
-  font-weight: 500;
-  color:${({ theme }) => theme.colors.graygrayer} ;
-  }
-`;
-const ArticleHeaderCont = styled.div`
-margin-bottom: 39px;
-`
-const ArticleMain = styled.div`
-  
-  h3{
-  font-family: 'Roboto',sans-serif;
-  font-weight: 500;
-  font-size: 22px;
-  color:${({ theme }) => theme.colors.grayer} ;
-  }
-  p{
-  font-family: 'Roboto',sans-serif;
-  font-size: 18px;
-  color:${({ theme }) => theme.colors.graygrayer} ;
-  font-weight: 400;
-  }
-`
 
 function ArticlePage(){
     const [article, setArticle] = useState(null);
@@ -110,13 +72,13 @@ function ArticlePage(){
                     </ArticleHeaderCont>
                 )}
                 {article &&
-                article.subtitle.map((articles) => (
-                    <ArticleMain key={articles.id}>
-                        <h3>{articles}</h3>
+                article.subtitle.map((sub) => (
+                    <ArticleMain key={sub.id}>
+                        <h3>{sub}</h3>
                         {article &&
-                        article.paragraph.map((articles) => (
-                            <div key={articles.id}>
-                                <p>{articles}</p>
+                        article.paragraph.map((par) => (
+                            <div key={par.id}>
+                                <p>{par}</p>
                             </div>
                         ))}
                     </ArticleMain>
