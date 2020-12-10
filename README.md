@@ -33,3 +33,10 @@
 #### Known bugs : 
  - På Admin Dashboard, må man hovre over meldingen på mail får at den skal komme opp
     [![N|Gif](https://gyazo.com/5e2a95959ec2423ad3bf4818d1d2fb93.gif)]
+    
+### Kode fra forelesning
+asyncCatch.js , auth.js, error.js, image.js og validate.js fra middleware mappen
+errorHandler.js, jwtToken.js, validaton.js utils mappen
+image.js fra models og controllers mappen
+authProvider.js fra client/src/contex mappen 
+
