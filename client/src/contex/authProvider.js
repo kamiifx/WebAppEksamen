@@ -1,3 +1,4 @@
+//tatt fra forelesning
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {getCurrent} from "../utiils/authService";
 

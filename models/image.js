@@ -1,3 +1,4 @@
+// tatt fra forelesning
 import mongoose from 'mongoose';
 
 const { Schema } = mongoose;

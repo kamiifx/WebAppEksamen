@@ -1,3 +1,4 @@
+//tatt fra forelesning
 import { userService } from '../services/index.js';
 import jwt from 'jsonwebtoken';
 import errorHandler from "../utils/errorHandler.js";

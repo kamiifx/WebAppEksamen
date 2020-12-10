@@ -1,3 +1,4 @@
+//tatt fra forelesning
 import ErrorHandler from '../utils/errorHandler.js';
 
 export default (err, req, res, next) => {
