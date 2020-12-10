@@ -126,15 +126,12 @@ function ArticlePage(){
                     </ArticleHeaderCont>
                 )}
                 {article &&
-                article.subtitle.map((articles) => (
-                    <ArticleMain key={articles.id}>
-                        <h3>{articles}</h3>
-                        {article &&
-                        article.paragraph.map((articles) => (
-                            <div key={articles.id}>
-                                <p>{articles}</p>
+                article.subtitle.map((sub, index) => (
+                    <ArticleMain key={sub.id}>
+                        <h3>{sub}</h3>
+                            <div>
+                                <p>{article.paragraph[index]}</p>
                             </div>
-                        ))}
                     </ArticleMain>
                 ))
                 }
