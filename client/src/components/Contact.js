@@ -6,6 +6,7 @@ import { create } from '../utiils/contactService.js';
 import { useForm } from 'react-hook-form';
 import {useAuthContext} from "../contex/authProvider.js";
 import {getCurrent} from "../utiils/authService";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -42,8 +43,10 @@ function Contact(){
         if (!data.success) {
             setCloseBtnState(true);
             setError(data.message);
+            toast("E-post ble sendt");
         } else {
             setSuccess(true);
+            toast("E-post ble sendt");
             setError(null);
 
         }
@@ -52,7 +55,7 @@ function Contact(){
 
     return(
         <div>
-
+            <ToastContainer/>
             <Header>
                 <h2>Kontakt oss</h2>
             </Header>
