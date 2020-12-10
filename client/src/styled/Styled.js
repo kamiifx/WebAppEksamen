@@ -205,7 +205,7 @@ export const FlexItemBox = styled(motion.div)`
 
 export const Footer = styled.footer`
   z-index: 1;
-  position: fixed;
+  position: sticky;
   height: 65px;
   bottom: 0;
   width:100%;
