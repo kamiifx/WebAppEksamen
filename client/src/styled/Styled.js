@@ -64,6 +64,12 @@ export const Container = styled.div`
   margin-left: 30%;
   }
 `;
+export const SmallContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  margin-left: 10rem;
+`
 
 export const ContainerFlex = styled(Container)`
   font-family: 'Roboto',sans-serif;
@@ -291,4 +297,46 @@ export const MotionButton = styled.button`
 `
 export const Check = styled.input`
   
+`
+
+export const Article = styled.article`
+  display: flex;
+  justify-content: center;
+  flex-direction:column;
+  width: 26%;
+  margin-left: 36%;
+  font-family: 'Roboto',sans-serif;
+  &.widthH{
+  width: 30%;
+  }
+`;
+
+export const ArticleHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 55%;
+  margin-bottom: -10px;
+  p{
+  font-size: 13px;
+  font-weight: 500;
+  color:${({ theme }) => theme.colors.graygrayer} ;
+  }
+`;
+export const ArticleHeaderCont = styled.div`
+margin-bottom: 39px;
+`
+export const ArticleMain = styled.div`
+  
+  h3{
+  font-family: 'Roboto',sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  color:${({ theme }) => theme.colors.grayer} ;
+  }
+  p{
+  font-family: 'Roboto',sans-serif;
+  font-size: 18px;
+  color:${({ theme }) => theme.colors.graygrayer} ;
+  font-weight: 400;
+  }
 `

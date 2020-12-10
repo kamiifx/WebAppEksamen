@@ -12,6 +12,7 @@ import Image from "./components/Image.js";
 import Offices from "./components/Offices";
 import FooterBottom from "./components/FooterBottom";
 import AdminDashboard from "./components/AdminDashboard";
+import OfficeDetail from "./components/OfficeDetail";
     function App() {
     const [modal,ToggleModal] = useState(false);
   return (
@@ -29,6 +30,7 @@ import AdminDashboard from "./components/AdminDashboard";
                           <Route exact path="/articles/:id" component={ArticlePage}/>
                           <Route exact path="/article/create" component={CreateArticle}/>
                           <Route exact path="/dashboard" component={AdminDashboard}/>
+                          <Route exact path="/offices/:id" component={OfficeDetail}/>
                           <FooterBottom/>
                       </AuthProvider>
                   </BrowserRouter>
