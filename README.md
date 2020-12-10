@@ -20,7 +20,9 @@
 >tilfelle "yarn run dev" ikke fungerer, kan man kjøre: "yarn run server" og 
 >"yarn run client" 
 >for få både client og server opp
-
+##### Database (MongoDb):
+ - Vi bruker Mongo Atlas Cloud Live Database
+    - Connection link : ``` mongodb+srv://web:web123@cluster0.3b5kc.mongodb.net/webapp?retryWrites=true&w=majority```
 ### Viktig brukere : 
  - For å lage en bruker med rolle user, så er det bare å registere seg gjennom "Hjem siden".
     - Known bug : Kan bare få opp registering modalen i hjem siden. 
