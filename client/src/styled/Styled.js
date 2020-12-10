@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {motion} from "framer-motion";
 
-
 export const BoxButton = styled(motion.button)`
   background-color:${({ theme }) => theme.colors.header};
   border: none;
@@ -11,6 +10,9 @@ export const BoxButton = styled(motion.button)`
   width: 10rem;
   height: 5rem;
   border-radius: 2px;
+    &:hover{
+  cursor: pointer;
+  }
   &.blue{
       background-color:${({ theme }) => theme.colors.accept};
   &:hover{
@@ -19,10 +21,11 @@ export const BoxButton = styled(motion.button)`
   }
   }
   &.green{
-  background-color:${({ theme }) => theme.colors.greenAccept};
+  background-color:${({theme}) => theme.colors.greenAccept};
   &:hover{
-    background-color:${({ theme }) => theme.colors.greenHover};
+    background-color:${({theme}) => theme.colors.greenHover};
     transition: 0.5s ease-in-out;
+  }
   }
   &.red{
   background-color:${({ theme }) => theme.colors.redDeny};
@@ -30,9 +33,6 @@ export const BoxButton = styled(motion.button)`
     background-color:${({ theme }) => theme.colors.alert};
     transition: 0.5s ease-in-out;
     }
-  }
-  &:hover{
-  cursor: pointer;
   }
 `;
 
@@ -45,11 +45,11 @@ export const BoxButtonSmall = styled(BoxButton)`
 
 export const BoxButtonMarg = styled(BoxButton)`
   margin-top: 25px;
-`
+`;
 
 export const Main = styled.main`
   background-color: ${({ theme }) => theme.colors.default};
-`
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -64,6 +64,7 @@ export const Container = styled.div`
   margin-left: 30%;
   }
 `;
+
 export const ContainerFlex = styled(Container)`
   font-family: 'Roboto',sans-serif;
   flex-direction: column;
@@ -75,7 +76,7 @@ export const ContainerFlex = styled(Container)`
   border-radius: 5px;
   background-color:${({ theme }) => theme.colors.header} ;
   margin-left: 40px;
-`
+`;
 
 export const LinkNavbar = styled.a`
   color: black;
@@ -204,7 +205,7 @@ export const FlexItemBox = styled(motion.div)`
 
 export const Footer = styled.footer`
   z-index: 1;
-  position: fixed;
+  position: sticky;
   height: 65px;
   bottom: 0;
   width:100%;

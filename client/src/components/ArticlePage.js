@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
-
+import {useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import {get} from '../utiils/articleService'
-import {Header} from "../styled/Styled";
+import {Header,FormButtonContainer,BoxButton} from "../styled/Styled";
 import {download} from "../utiils/imageService";
 import * as url from "url";
 
@@ -56,12 +56,8 @@ function ArticlePage(){
     useEffect(async () => {
         if(id){
             const {data} = await get(id)
-
             setArticle(data)
             setImageId(data.imageId);
-
-
-
         }
 
 
@@ -126,6 +122,10 @@ function ArticlePage(){
                     </ArticleMain>
                 ))
                 }
+                <FormButtonContainer>
+                    <BoxButton className="red">Slett</BoxButton>
+                    <BoxButton className="blue">Rediger</BoxButton>
+                </FormButtonContainer>
             </Article>
         </div>
     )

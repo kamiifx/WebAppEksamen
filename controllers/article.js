@@ -29,6 +29,5 @@ export const update = asyncCatch(async (req, res, next) => {
 });
 export const remove = asyncCatch(async (req, res, next) => {
     const article = await articleService.removeArticle(req.params.id)
-
     res.status(204).json({ success: true, data: article });
 });

@@ -25,3 +25,20 @@ export const create = async (data) => {
         return err.response;
     }
 }
+
+export const slett = async (id) => {
+    try{
+        return await http.delete(`${API}/${id}`)
+    }catch (err){
+        return err.response;
+    }
+}
+
+
+export const edit = async (id) => {
+    try{
+        return await http.put(`${API}/${id}`)
+    } catch (err){
+        return err.response;
+    }
+}
