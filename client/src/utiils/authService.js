@@ -31,3 +31,11 @@ export const logout = async () => {
         return err.response;
     }
 }
+
+export const listUsers = async () => {
+    try{
+        return await http.get(`${API}`)
+    }catch (err){
+        return err.response;
+    }
+}

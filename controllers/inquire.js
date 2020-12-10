@@ -12,7 +12,7 @@ export const create = asyncCatch(async (req, res, next) => {
         await sendMail({
             from: req.body.from,
             email:  "admin@damin.com",
-            subject: 'Henvendelse',
+            subject: req.body.subject,
             message: req.body.message,
         });
     } catch (error) {

@@ -17,8 +17,8 @@ const articleValues = {
         'string.min': 'Minimum 10 character',
     }),
     subtitle: Joi.array().items(Joi.string().min(2)).required().messages({
-        'string.empty': 'Enter paragraph',
-        'any.required': 'Enter paragraph',
+        'string.empty': 'Enter subtitle',
+        'any.required': 'Enter subtitle',
         'string.min': 'Minimum 2 character',
     }),
     category: Joi.string().required().messages({
@@ -26,6 +26,9 @@ const articleValues = {
         'any.required': 'Enter category!',
     }),
     secret: Joi.boolean().messages({
+
+    }),
+    imageId: Joi.string().messages({
 
     }),
 
