@@ -79,6 +79,15 @@ function Contact(){
                        ref={register({
                            required: true,
                        })}/>
+                    <p >Subject:</p>
+                    <FormInput id="subject"
+                                  placeholder="subject"
+                                  name="subject"
+                                  className="border"
+                                  type="message"
+                                  ref={register({
+                                      required: true,
+                                  })}/>
                 <p >Message:</p>
                 <FormTextArea id="message"
                        placeholder="message"
@@ -88,6 +97,7 @@ function Contact(){
                        ref={register({
                            required: true,
                        })}/>
+
                 </FormInputContainer>
                 <FormButtonContainer className="center" ><BoxButton className="green" type="submit">Send!</BoxButton></FormButtonContainer>
 
