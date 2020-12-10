@@ -27,3 +27,7 @@
  - For å teste ut admin funksjoner kan man logge in med:
  > Email : admin@admin.com
  >Passord : admin1
+
+#### Known bugs : 
+ - På Admin Dashboard, må man hovre over meldingen på mail får at den skal komme opp
+    [![N|Gif](https://gyazo.com/5e2a95959ec2423ad3bf4818d1d2fb93.mp4)]
