@@ -43,6 +43,7 @@ function Articles(){
             {articles &&
                 articles.map((articles) => (
                     <Container className="min" key={articles.id}>
+                        {isLoggedIn&&articles.secret&&(
                         <ArticleBlock>
                             <a href={`/articles/${articles.id}`}>BILDE</a>
                             <ArticleIntro>
@@ -51,7 +52,19 @@ function Articles(){
                             </ArticleIntro>
                             <h4 className="kat">{articles.category}</h4>
                         </ArticleBlock>
-                    </Container>
+                        )}
+                        {!articles.secret&&(
+                            <ArticleBlock>
+                                <a href={`/articles/${articles.id}`}>BILDE</a>
+                                <ArticleIntro>
+                                    <h2>{articles.tittle}</h2>
+                                    <p>{articles.ingress}</p>
+                                </ArticleIntro>
+                                <h4 className="kat">{articles.category}</h4>
+                            </ArticleBlock>
+                        )}
+
+                        </Container>
                 ))
             }
         </div>
